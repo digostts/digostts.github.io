@@ -13,7 +13,7 @@
     --light-color: #f5f5f5;
     --white: #ffffff;
     --gray: #6c757d;
-    --accent-orange: #FF6B35;
+    --highlight-color: #4ECDC4; /* Azul-turquesa para destaques */
     
     /* Gradientes */
     --gradient-primary: linear-gradient(135deg, #009845 0%, #00A3E0 100%);
@@ -35,6 +35,7 @@ body {
     color: var(--dark-color);
     background-color: var(--white);
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 .container {
@@ -93,6 +94,7 @@ ul {
     font-weight: 500;
     transition: var(--transition);
     position: relative;
+    padding: 5px 0;
 }
 
 .nav-menu a::after {
@@ -106,12 +108,18 @@ ul {
     transition: var(--transition);
 }
 
-.nav-menu a:hover::after {
+.nav-menu a:hover::after,
+.nav-menu a.active::after {
     width: 100%;
 }
 
-.nav-menu a:hover {
+.nav-menu a:hover,
+.nav-menu a.active {
     color: var(--primary-color);
+}
+
+.nav-menu a.active {
+    font-weight: 700;
 }
 
 .hamburger {
@@ -126,6 +134,36 @@ ul {
     height: 3px;
     background: var(--dark-color);
     transition: var(--transition);
+}
+
+/* ===== BOTÃO VOLTAR AO TOPO ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--gradient-primary);
+    color: var(--white);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 999;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
 /* ===== HERO SECTION ===== */
@@ -152,9 +190,15 @@ ul {
 }
 
 .highlight {
-    color: var(--accent-orange);
+    color: var(--highlight-color);
     display: block;
     margin-top: 10px;
+}
+
+.hero-subtitle-main {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    animation: fadeInUp 1s ease 0.1s backwards;
 }
 
 .hero-subtitle {
@@ -188,7 +232,11 @@ ul {
 .stat-item h3 {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
-    color: var(--accent-orange);
+    color: var(--white);
+}
+
+.stat-item h3 .plus {
+    color: var(--highlight-color);
 }
 
 .stat-item p {
@@ -743,6 +791,10 @@ section {
     .hero-title {
         font-size: 2rem;
     }
+
+    .hero-subtitle-main {
+        font-size: 1.5rem;
+    }
     
     .hero-subtitle {
         font-size: 1.1rem;
@@ -767,6 +819,13 @@ section {
     .skills-grid,
     .projetos-grid {
         grid-template-columns: 1fr;
+    }
+
+    .back-to-top {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        right: 20px;
     }
 }
 
