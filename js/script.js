@@ -37,6 +37,47 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// ===== MENU ATIVO BASEADO NA SEÇÃO =====
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-link');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= (sectionTop - 200)) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// ===== BOTÃO VOLTAR AO TOPO =====
+const backToTopButton = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('show');
+    } else {
+        backToTopButton.classList.remove('show');
+    }
+});
+
+backToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
 // ===== ANIMAÇÃO AO SCROLL =====
 const observerOptions = {
     threshold: 0.1,
@@ -83,10 +124,10 @@ const animateCounter = (element, target) => {
     const timer = setInterval(() => {
         current += increment;
         if (current >= target) {
-            element.textContent = target + '+';
+            element.innerHTML = target + '<span class="plus">+</span>';
             clearInterval(timer);
         } else {
-            element.textContent = Math.floor(current) + '+';
+            element.innerHTML = Math.floor(current) + '<span class="plus">+</span>';
         }
     }, 30);
 };
@@ -96,7 +137,8 @@ const statsObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             const statItems = entry.target.querySelectorAll('.stat-item h3');
             statItems.forEach(item => {
-                const target = parseInt(item.textContent);
+                const text = item.textContent.replace('+', '');
+                const target = parseInt(text);
                 animateCounter(item, target);
             });
             statsObserver.unobserve(entry.target);
