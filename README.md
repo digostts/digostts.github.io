@@ -58,3 +58,5 @@ Rodrigo Santos - Analista de Business Intelligence com 3+ anos de experiência e
 © 2026 - Portfolio de Business Intelligence | Rodrigo Santos
 
 Desenvolvido com ❤️ por um Analista de BI apaixonado por dados
+
+v. 2.1
