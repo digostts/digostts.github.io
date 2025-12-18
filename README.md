@@ -53,11 +53,6 @@ Rodrigo Santos - Analista de Business Intelligence com 3+ anos de experiência e
 - **GitHub**: [@digostts](https://github.com/digostts)
 - **Email**: rodrigobas.1993@gmail.com
 
-## 🌐 Acesse o Portfolio
-
-Após publicar no GitHub Pages, o portfolio estará disponível em:
-`https://digostts.github.io`
-
 ---
 
 © 2026 - Portfolio de Business Intelligence | Rodrigo Santos

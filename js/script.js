@@ -119,15 +119,18 @@ document.querySelectorAll('.skill-card').forEach(card => {
 
 // ===== CONTADOR ANIMADO (Stats) =====
 const animateCounter = (element, target) => {
+    const numberSpan = element.querySelector('.stat-number');
+    const plusSpan = element.querySelector('.plus');
+    
     let current = 0;
     const increment = target / 50;
     const timer = setInterval(() => {
         current += increment;
         if (current >= target) {
-            element.innerHTML = target + '<span class="plus">+</span>';
+            numberSpan.textContent = target;
             clearInterval(timer);
         } else {
-            element.innerHTML = Math.floor(current) + '<span class="plus">+</span>';
+            numberSpan.textContent = Math.floor(current);
         }
     }, 30);
 };
@@ -137,8 +140,8 @@ const statsObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             const statItems = entry.target.querySelectorAll('.stat-item h3');
             statItems.forEach(item => {
-                const text = item.textContent.replace('+', '');
-                const target = parseInt(text);
+                const numberSpan = item.querySelector('.stat-number');
+                const target = parseInt(numberSpan.textContent);
                 animateCounter(item, target);
             });
             statsObserver.unobserve(entry.target);
@@ -150,3 +153,4 @@ const heroStats = document.querySelector('.hero-stats');
 if (heroStats) {
     statsObserver.observe(heroStats);
 }
+
