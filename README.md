@@ -59,4 +59,4 @@ Rodrigo Santos - Analista de Business Intelligence com 3+ anos de experiência e
 
 Desenvolvido com ❤️ por um Analista de BI apaixonado por dados
 
-v. 2.1
+v. 2.2
