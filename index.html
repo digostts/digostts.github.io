@@ -345,7 +345,9 @@
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-icon">
-                        <i class="fas fa-briefcase"></i>
+                        <button id="btnCurriculo" class="btn-curriculum" title="Baixar ou visualizar currículo">
+                            <i class="fas fa-file-pdf"></i>
+                        </button>
                     </div>
                     <div class="timeline-content">
                         <h3>Analista de Business Intelligence</h3>
@@ -406,6 +408,9 @@
                         <span class="tag">Section Access</span>
                         <span class="tag">Segurança</span>
                     </div>
+                    <button class="btn-visualizar" data-image="imagens/governança.png" title="Visualizar imagem do projeto">
+                        <i class="fas fa-image"></i> Visualizar
+                    </button>
                 </div>
 
                 <div class="projeto-card">
@@ -419,6 +424,9 @@
                         <span class="tag">Power Platform</span>
                         <span class="tag">Automação</span>
                     </div>
+                    <button class="btn-visualizar" data-image="imagens/automacao.png" title="Visualizar imagem do projeto">
+                        <i class="fas fa-image"></i> Visualizar
+                    </button>
                 </div>
 
                 <div class="projeto-card">
@@ -432,6 +440,9 @@
                         <span class="tag">ETL</span>
                         <span class="tag">SQL</span>
                     </div>
+                    <button class="btn-visualizar" data-image="imagens/pipeline.png" title="Visualizar imagem do projeto">
+                        <i class="fas fa-image"></i> Visualizar
+                    </button>
                 </div>
 
                 <div class="projeto-card">
@@ -445,6 +456,9 @@
                         <span class="tag">SQL</span>
                         <span class="tag">ETL</span>
                     </div>
+                    <button class="btn-visualizar" data-image="imagens/dashboard.png" title="Visualizar imagem do projeto">
+                        <i class="fas fa-image"></i> Visualizar
+                    </button>
                 </div>
 
                 <div class="projeto-card">
@@ -458,6 +472,9 @@
                         <span class="tag">JavaScript</span>
                         <span class="tag">HTML/CSS</span>
                     </div>
+                    <button class="btn-visualizar" data-image="imagens/extensao.png" title="Visualizar imagem do projeto">
+                        <i class="fas fa-image"></i> Visualizar
+                    </button>
                 </div>
 
                 <div class="projeto-card">
@@ -471,6 +488,9 @@
                         <span class="tag">Power Platform</span>
                         <span class="tag">Mobile</span>
                     </div>
+                    <button class="btn-visualizar" data-image="imagens/app.png" title="Visualizar imagem do projeto">
+                        <i class="fas fa-image"></i> Visualizar
+                    </button>
                 </div>
             </div>
         </div>
@@ -501,6 +521,19 @@
             </div>
         </div>
     </section>
+
+    <!-- Modal para Imagens dos Projetos -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Projeto</h2>
+                <button class="close-modal" onclick="closeImageModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <img id="modalImage" src="" alt="Imagem do projeto" class="modal-image">
+        </div>
+    </div>
 
     <!-- Botão Voltar ao Topo -->
     <button id="backToTop" class="back-to-top" title="Voltar ao topo">

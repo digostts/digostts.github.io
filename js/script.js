@@ -154,3 +154,57 @@ if (heroStats) {
     statsObserver.observe(heroStats);
 }
 
+// ===== MODAL PARA IMAGENS DOS PROJETOS =====
+const imageModal = document.getElementById('imageModal');
+const modalImage = document.getElementById('modalImage');
+const modalTitle = document.getElementById('modalTitle');
+
+// Abrir modal com imagem
+function openImageModal(imagePath, projectName) {
+    modalImage.src = imagePath;
+    modalTitle.textContent = projectName;
+    imageModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Fechar modal de imagem
+function closeImageModal() {
+    imageModal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+// Event listeners para botões de visualizar
+document.querySelectorAll('.btn-visualizar').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const imagePath = this.getAttribute('data-image');
+        const projectCard = this.closest('.projeto-card');
+        const projectName = projectCard.querySelector('.projeto-header h3').textContent;
+        openImageModal(imagePath, projectName);
+    });
+});
+
+// Fechar modal ao clicar fora
+imageModal.addEventListener('click', function(e) {
+    if (e.target === imageModal) {
+        closeImageModal();
+    }
+});
+
+// Fechar modal ao pressionar ESC
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeImageModal();
+    }
+});
+
+// ===== BOTÃO CURRÍCULO =====
+const btnCurriculo = document.getElementById('btnCurriculo');
+
+if (btnCurriculo) {
+    btnCurriculo.addEventListener('click', function() {
+        // Abre o PDF para visualizar em uma nova aba
+        window.open('curriculo/Curriculo.pdf', '_blank');
+    });
+}
+
+
