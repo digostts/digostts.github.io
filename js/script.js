@@ -159,12 +159,46 @@ const imageModal = document.getElementById('imageModal');
 const modalImage = document.getElementById('modalImage');
 const modalTitle = document.getElementById('modalTitle');
 
+// Array com informações dos projetos (em ordem)
+const projectImages = [
+    { image: 'imagens/governança.png', title: 'Arquitetura de Governança de Dados em BI' },
+    { image: 'imagens/automacao.png', title: 'Automação de Processos BI' },
+    { image: 'imagens/pipeline.png', title: 'Pipeline de Dados Automatizado' },
+    { image: 'imagens/dashboard.png', title: 'Dashboard Executivo Consolidado' },
+    { image: 'imagens/extensao.png', title: 'Extensão Customizada' },
+    { image: 'imagens/app.png', title: 'App de Coleta de Dados' }
+];
+
+let currentImageIndex = 0;
+
 // Abrir modal com imagem
 function openImageModal(imagePath, projectName) {
-    modalImage.src = imagePath;
-    modalTitle.textContent = projectName;
+    // Encontra o índice da imagem
+    currentImageIndex = projectImages.findIndex(proj => proj.image === imagePath);
+    if (currentImageIndex === -1) currentImageIndex = 0;
+    
+    displayCurrentImage();
     imageModal.classList.add('active');
     document.body.style.overflow = 'hidden';
+}
+
+// Exibir imagem atual
+function displayCurrentImage() {
+    const project = projectImages[currentImageIndex];
+    modalImage.src = project.image;
+    modalTitle.textContent = project.title;
+}
+
+// Próxima imagem
+function nextImage() {
+    currentImageIndex = (currentImageIndex + 1) % projectImages.length;
+    displayCurrentImage();
+}
+
+// Imagem anterior
+function previousImage() {
+    currentImageIndex = (currentImageIndex - 1 + projectImages.length) % projectImages.length;
+    displayCurrentImage();
 }
 
 // Fechar modal de imagem
@@ -194,6 +228,14 @@ imageModal.addEventListener('click', function(e) {
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         closeImageModal();
+    }
+    // Navegação com setas do teclado
+    if (imageModal.classList.contains('active')) {
+        if (e.key === 'ArrowRight') {
+            nextImage();
+        } else if (e.key === 'ArrowLeft') {
+            previousImage();
+        }
     }
 });
 

@@ -49,12 +49,18 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <p class="hero-greeting">Olá, eu sou</p>
-                <h1 class="hero-name">Rodrigo Santos</h1>
-                <h2 class="hero-role">Analista de Business Intelligence</h2>
-                <p class="hero-subtitle">
-                    Transformando dados em insights estratégicos com Qlik Sense e Power BI
-                </p>
+                <div class="hero-header">
+                    <div class="hero-profile">
+                        <img src="perfil/perfil.png" alt="Foto de perfil de Rodrigo Santos" class="profile-image">
+                    </div>
+                    <div class="hero-text">
+                        <p class="hero-greeting">Olá, eu sou</p>
+                        <h1 class="hero-name">Rodrigo Santos</h1>
+                        <h2 class="hero-role">Analista de Business Intelligence</h2>
+                        <p class="hero-subtitle">
+                            Transformando dados em insights estratégicos com BI
+                        </p>
+                    </div>
                 
                 <div class="hero-stats">
                     <div class="stat-item">
@@ -352,6 +358,9 @@
                     <div class="timeline-content">
                         <h3>Analista de Business Intelligence</h3>
                         <span class="timeline-date">3+ Anos de Experiência</span>
+                        <p class="experience-intro">
+                            Experiência consolidada em grandes empresas dos nichos <strong>público e privado</strong>, desenvolvendo soluções analíticas estratégicas.
+                        </p>
                         <ul class="experience-list">
                             <li>
                                 <i class="fas fa-check-circle"></i>
@@ -400,7 +409,7 @@
                 <div class="projeto-card">
                     <div class="projeto-header">
                         <i class="fas fa-shield-alt"></i>
-                        <h3>Sistema de Governança de Dados</h3>
+                        <h3>Arquitetura de Governança de Dados em BI</h3>
                     </div>
                     <p>Implementação de regras de acesso (Section Access) garantindo segurança e controle de dados sensíveis.</p>
                     <div class="projeto-tags">
@@ -408,8 +417,8 @@
                         <span class="tag">Section Access</span>
                         <span class="tag">Segurança</span>
                     </div>
-                    <button class="btn-visualizar" data-image="imagens/governança.png" title="Visualizar imagem do projeto">
-                        <i class="fas fa-image"></i> Visualizar
+                    <button class="btn-visualizar" data-image="imagens/governança.png" title="Ver exemplo ilustrativo do projeto">
+                        <i class="fas fa-image"></i> Exemplo Ilustrativo
                     </button>
                 </div>
 
@@ -424,8 +433,8 @@
                         <span class="tag">Power Platform</span>
                         <span class="tag">Automação</span>
                     </div>
-                    <button class="btn-visualizar" data-image="imagens/automacao.png" title="Visualizar imagem do projeto">
-                        <i class="fas fa-image"></i> Visualizar
+                    <button class="btn-visualizar" data-image="imagens/automacao.png" title="Ver exemplo ilustrativo do projeto">
+                        <i class="fas fa-image"></i> Exemplo Ilustrativo
                     </button>
                 </div>
 
@@ -440,8 +449,8 @@
                         <span class="tag">ETL</span>
                         <span class="tag">SQL</span>
                     </div>
-                    <button class="btn-visualizar" data-image="imagens/pipeline.png" title="Visualizar imagem do projeto">
-                        <i class="fas fa-image"></i> Visualizar
+                    <button class="btn-visualizar" data-image="imagens/pipeline.png" title="Ver exemplo ilustrativo do projeto">
+                        <i class="fas fa-image"></i> Exemplo Ilustrativo
                     </button>
                 </div>
 
@@ -456,8 +465,8 @@
                         <span class="tag">SQL</span>
                         <span class="tag">ETL</span>
                     </div>
-                    <button class="btn-visualizar" data-image="imagens/dashboard.png" title="Visualizar imagem do projeto">
-                        <i class="fas fa-image"></i> Visualizar
+                    <button class="btn-visualizar" data-image="imagens/dashboard.png" title="Ver exemplo ilustrativo do projeto">
+                        <i class="fas fa-image"></i> Exemplo Ilustrativo
                     </button>
                 </div>
 
@@ -472,8 +481,8 @@
                         <span class="tag">JavaScript</span>
                         <span class="tag">HTML/CSS</span>
                     </div>
-                    <button class="btn-visualizar" data-image="imagens/extensao.png" title="Visualizar imagem do projeto">
-                        <i class="fas fa-image"></i> Visualizar
+                    <button class="btn-visualizar" data-image="imagens/extensao.png" title="Ver exemplo ilustrativo do projeto">
+                        <i class="fas fa-image"></i> Exemplo Ilustrativo
                     </button>
                 </div>
 
@@ -488,8 +497,8 @@
                         <span class="tag">Power Platform</span>
                         <span class="tag">Mobile</span>
                     </div>
-                    <button class="btn-visualizar" data-image="imagens/app.png" title="Visualizar imagem do projeto">
-                        <i class="fas fa-image"></i> Visualizar
+                    <button class="btn-visualizar" data-image="imagens/app.png" title="Ver exemplo ilustrativo do projeto">
+                        <i class="fas fa-image"></i> Exemplo Ilustrativo
                     </button>
                 </div>
             </div>
@@ -505,6 +514,10 @@
                     Interessado em colaborar ou discutir projetos de BI? Vamos conversar!
                 </p>
                 <div class="contato-links">
+                    <a href="https://wa.me/5571982664135?text=Olá%20Rodrigo!%20Vi%20seu%20portfólio%20de%20Business%20Intelligence%20e%20gostaria%20de%20conversar%20sobre%20projetos%20de%20BI.%20Você%20tem%20disponibilidade?" target="_blank" class="contato-btn whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp
+                    </a>
                     <a href="https://linkedin.com/in/digostts" target="_blank" class="contato-btn">
                         <i class="fab fa-linkedin"></i>
                         LinkedIn
@@ -531,7 +544,15 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <img id="modalImage" src="" alt="Imagem do projeto" class="modal-image">
+            <div class="modal-body">
+                <button class="modal-nav modal-prev" onclick="previousImage()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <img id="modalImage" src="" alt="Imagem do projeto" class="modal-image">
+                <button class="modal-nav modal-next" onclick="nextImage()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
         </div>
     </div>
 
