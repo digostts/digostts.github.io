@@ -959,7 +959,7 @@ section {
     display: flex;
     gap: 1rem;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .contato-btn {
@@ -970,8 +970,11 @@ section {
     font-weight: 600;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     transition: var(--transition);
+    white-space: nowrap;
+    min-height: 48px;
 }
 
 .contato-btn:hover {
@@ -982,12 +985,13 @@ section {
 }
 
 .whatsapp-btn {
-    background: #25D366;
-    color: var(--white);
+    background: var(--white);
+    color: var(--dark-color);
 }
 
 .whatsapp-btn:hover {
-    background: #20BA5A;
+    background: #25D366;
+    color: var(--white);
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
 }
