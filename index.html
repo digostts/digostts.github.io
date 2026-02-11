@@ -64,19 +64,19 @@
                 
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <h3><span class="stat-number">3</span><span class="plus">+</span></h3>
+                        <h3><span class="stat-number" id="yearsExp">3</span><span class="plus">+</span></h3>
                         <p>Anos de Experiência</p>
                     </div>
                     <div class="stat-item">
-                        <h3><span class="stat-number">10</span><span class="plus">+</span></h3>
+                        <h3><span class="stat-number" id="projectsCount">10</span><span class="plus">+</span></h3>
                         <p>Projetos Implementados</p>
                     </div>
                     <div class="stat-item">
-                        <h3><span class="stat-number">50</span><span class="plus">+</span></h3>
+                        <h3><span class="stat-number" id="dashboardsCount">50</span><span class="plus">+</span></h3>
                         <p>Dashboards Criados</p>
                     </div>
                     <div class="stat-item">
-                        <h3><span class="stat-number">200</span><span class="plus">+</span></h3>
+                        <h3><span class="stat-number" id="reportsCount">200</span><span class="plus">+</span></h3>
                         <p>Relatórios Entregues</p>
                     </div>
                 </div>
@@ -100,13 +100,13 @@
                 <div class="sobre-text">
                     <p>
                         Sou <strong>Rodrigo Santos</strong>, um <strong>Analista de Business Intelligence</strong> apaixonado por transformar 
-                        dados complexos em insights visuais e acionáveis. Com mais de <strong>3 anos de experiência</strong>, 
+                        dados complexos em insights visuais e acionáveis. Com mais de <strong><span id="yearsExp2">3</span> anos de experiência</strong>, 
                         especializo-me em criar soluções analíticas robustas utilizando principalmente 
                         <strong>Qlik Sense</strong>.
                     </p>
                     <p>
-                        Ao longo da minha trajetória, desenvolvi mais de <strong>50 dashboards interativos</strong> 
-                        e entreguei mais de <strong>200 relatórios estratégicos</strong>, sempre focando em 
+                        Ao longo da minha trajetória, desenvolvi mais de <strong><span id="dashboardsCount2">50</span> dashboards interativos</strong> 
+                        e entreguei mais de <strong><span id="reportsCount2">200</span> relatórios estratégicos</strong>, sempre focando em 
                         facilitar a tomada de decisão baseada em dados.
                     </p>
                     <p>
@@ -320,6 +320,24 @@
                 </div>
             </div>
 
+            <!-- Idiomas -->
+            <div class="skills-category">
+                <h3><i class="fas fa-globe"></i> Idiomas</h3>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h4>Inglês Técnico</h4>
+                        <ul class="skill-details">
+                            <li>Leitura de Documentação</li>
+                            <li>Comunicação Técnica</li>
+                            <li>Compreensão de Tutoriais</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
             <!-- Metodologias -->
             <div class="skills-category">
                 <h3><i class="fas fa-tasks"></i> Metodologias Ágeis</h3>
@@ -357,26 +375,30 @@
                     </div>
                     <div class="timeline-content">
                         <h3>Analista de Business Intelligence</h3>
-                        <span class="timeline-date">3+ Anos de Experiência</span>
+                        <span class="timeline-date"><span id="yearsExp3">3</span>+ Anos de Experiência</span>
                         <p class="experience-intro">
                             Experiência consolidada em grandes empresas dos nichos <strong>público e privado</strong>, desenvolvendo soluções analíticas estratégicas.
                         </p>
                         <ul class="experience-list">
                             <li>
                                 <i class="fas fa-check-circle"></i>
-                                Desenvolvimento e manutenção de <strong>50+ dashboards interativos</strong> em Qlik Sense
+                                Desenvolvimento e manutenção de <strong><span id="dashboardsCount3">50</span>+ dashboards interativos</strong> em Qlik Sense
                             </li>
                             <li>
                                 <i class="fas fa-check-circle"></i>
-                                Entrega de <strong>200+ relatórios analíticos</strong> para diferentes áreas de negócio
+                                Entrega de <strong><span id="reportsCount3">200</span>+ relatórios analíticos</strong> para diferentes áreas de negócio
                             </li>
                             <li>
                                 <i class="fas fa-check-circle"></i>
-                                Implementação completa de <strong>10+ projetos de BI</strong> end-to-end
+                                Implementação completa de <strong><span id="projectsCount3">10</span>+ projetos de BI</strong> end-to-end
                             </li>
                             <li>
                                 <i class="fas fa-check-circle"></i>
                                 Criação de <strong>extensão customizada</strong> para Qlik Sense
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Desenvolvimento de <strong>aplicações em Mashup</strong> para integração de dados
                             </li>
                             <li>
                                 <i class="fas fa-check-circle"></i>
@@ -408,8 +430,24 @@
             <div class="projetos-grid">
                 <div class="projeto-card">
                     <div class="projeto-header">
+                        <i class="fas fa-th-large"></i>
+                        <h3>Portal Mashup</h3>
+                    </div>
+                    <p>Página Mashup moderna e dinâmica que centraliza fluxos e aplicações do Qlik Sense em uma única interface agradável e intuitiva.</p>
+                    <div class="projeto-tags">
+                        <span class="tag">Mashup</span>
+                        <span class="tag">Qlik Sense</span>
+                        <span class="tag">Design Moderno</span>
+                    </div>
+                    <button class="btn-visualizar" data-image="imagens/mashup.png" title="Ver exemplo ilustrativo do projeto">
+                        <i class="fas fa-image"></i> Exemplo Ilustrativo
+                    </button>
+                </div>
+
+                <div class="projeto-card">
+                    <div class="projeto-header">
                         <i class="fas fa-shield-alt"></i>
-                        <h3>Arquitetura de Governança de Dados em BI</h3>
+                        <h3>Governança de Dados</h3>
                     </div>
                     <p>Implementação de regras de acesso (Section Access) garantindo segurança e controle de dados sensíveis.</p>
                     <div class="projeto-tags">
@@ -425,7 +463,7 @@
                 <div class="projeto-card">
                     <div class="projeto-header">
                         <i class="fas fa-sync"></i>
-                        <h3>Automação de Processos BI</h3>
+                        <h3>Automação de Processos</h3>
                     </div>
                     <p>Criação de fluxos automatizados para atualização de dados e distribuição de relatórios usando Power Automate.</p>
                     <div class="projeto-tags">
@@ -441,7 +479,7 @@
                 <div class="projeto-card">
                     <div class="projeto-header">
                         <i class="fas fa-project-diagram"></i>
-                        <h3>Pipeline de Dados Automatizado</h3>
+                        <h3>Pipeline de Dados</h3>
                     </div>
                     <p>Desenvolvimento de pipeline ETL completo usando Alteryx para transformação e carga de dados.</p>
                     <div class="projeto-tags">
@@ -457,7 +495,7 @@
                 <div class="projeto-card">
                     <div class="projeto-header">
                         <i class="fas fa-chart-area"></i>
-                        <h3>Dashboard Executivo Consolidado</h3>
+                        <h3>Dashboard Executivo</h3>
                     </div>
                     <p>Dashboard executivo integrando múltiplas fontes de dados com KPIs estratégicos e análises descritivas.</p>
                     <div class="projeto-tags">
@@ -486,21 +524,6 @@
                     </button>
                 </div>
 
-                <div class="projeto-card">
-                    <div class="projeto-header">
-                        <i class="fas fa-mobile-alt"></i>
-                        <h3>App de Coleta de Dados</h3>
-                    </div>
-                    <p>Aplicativo mobile desenvolvido com Power Apps para coleta de dados em campo e integração com dashboards.</p>
-                    <div class="projeto-tags">
-                        <span class="tag">Power Apps</span>
-                        <span class="tag">Power Platform</span>
-                        <span class="tag">Mobile</span>
-                    </div>
-                    <button class="btn-visualizar" data-image="imagens/app.png" title="Ver exemplo ilustrativo do projeto">
-                        <i class="fas fa-image"></i> Exemplo Ilustrativo
-                    </button>
-                </div>
             </div>
         </div>
     </section>
@@ -569,6 +592,74 @@
         </div>
     </footer>
 
+    <script>
+        // Automação incremental de valores baseada em data
+        function calculateMetrics() {
+            const startDate = new Date(2023, 0, 1); // 01/01/2023
+            const today = new Date();
+            const years = today.getFullYear() - startDate.getFullYear();
+            
+            // Calcula com base 0 em 2023
+            const yearsExp = 0 + years;
+            const projects = 0 + (years * 5);
+            const dashboards = (0 + (years * 10)) + 20;
+            const reports = (0 + (years * 50)) + 50;
+            
+            return { yearsExp, projects, dashboards, reports };
+        }
+        
+        function updateMetrics() {
+            const metrics = calculateMetrics();
+            
+            // Atualizar anos de experiência
+            if (document.getElementById('yearsExp')) {
+                document.getElementById('yearsExp').textContent = metrics.yearsExp;
+            }
+            if (document.getElementById('yearsExp2')) {
+                document.getElementById('yearsExp2').textContent = metrics.yearsExp;
+            }
+            if (document.getElementById('yearsExp3')) {
+                document.getElementById('yearsExp3').textContent = metrics.yearsExp;
+            }
+            
+            // Atualizar projetos
+            if (document.getElementById('projectsCount')) {
+                document.getElementById('projectsCount').textContent = metrics.projects;
+            }
+            if (document.getElementById('projectsCount3')) {
+                document.getElementById('projectsCount3').textContent = metrics.projects;
+            }
+            
+            // Atualizar dashboards
+            if (document.getElementById('dashboardsCount')) {
+                document.getElementById('dashboardsCount').textContent = metrics.dashboards;
+            }
+            if (document.getElementById('dashboardsCount2')) {
+                document.getElementById('dashboardsCount2').textContent = metrics.dashboards;
+            }
+            if (document.getElementById('dashboardsCount3')) {
+                document.getElementById('dashboardsCount3').textContent = metrics.dashboards;
+            }
+            
+            // Atualizar relatórios
+            if (document.getElementById('reportsCount')) {
+                document.getElementById('reportsCount').textContent = metrics.reports;
+            }
+            if (document.getElementById('reportsCount2')) {
+                document.getElementById('reportsCount2').textContent = metrics.reports;
+            }
+            if (document.getElementById('reportsCount3')) {
+                document.getElementById('reportsCount3').textContent = metrics.reports;
+            }
+        }
+        
+        // Executar quando a página carregar
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', updateMetrics);
+        } else {
+            updateMetrics();
+        }
+    </script>
     <script src="js/script.js"></script>
 </body>
 </html>
