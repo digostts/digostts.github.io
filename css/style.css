@@ -618,9 +618,88 @@ section {
     background: var(--light-color);
 }
 
+.experiencia-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.experiencia-coluna {
+    display: flex;
+    flex-direction: column;
+}
+
+.experiencia-subtitle {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.profissional-container {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.profissional-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-curriculum-ext {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.btn-curriculum-ext i {
+    font-size: 1.5rem;
+    color: var(--white);
+}
+
+.btn-curriculum-ext:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+}
+
+.academia-container {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow-md);
+}
+
+.academia-section {
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.academia-section:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.academia-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+    font-weight: 600;
+}
+
 .timeline {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
 }
 
 .timeline-item {
@@ -1086,6 +1165,11 @@ section {
     
     .section-title {
         font-size: 2rem;
+    }
+    
+    .experiencia-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
     
     .timeline-item {
