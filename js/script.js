@@ -209,7 +209,13 @@ function closeImageModal() {
 
 // Event listeners para botões de visualizar
 document.querySelectorAll('.btn-visualizar').forEach(btn => {
-    btn.addEventListener('click', function() {
+    btn.addEventListener('click', function(e) {
+        // Se é um link (tem href), não abre o modal de imagem
+        if (this.tagName === 'A' || this.getAttribute('href')) {
+            return;
+        }
+        
+        e.preventDefault();
         const imagePath = this.getAttribute('data-image');
         const projectCard = this.closest('.projeto-card');
         const projectName = projectCard.querySelector('.projeto-header h3').textContent;

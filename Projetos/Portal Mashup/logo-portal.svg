@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="96" viewBox="0 0 420 96" role="img" aria-label="Logo do Portal Mashup">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#5fb899"/>
+      <stop offset="1" stop-color="#3ca68d"/>
+    </linearGradient>
+  </defs>
+  <!-- ícone: barras + círculo -->
+  <g transform="translate(12,12)">
+    <!-- barras -->
+    <rect x="0" y="28" width="10" height="44" rx="2" fill="#2d6f53" />
+    <rect x="18" y="18" width="10" height="54" rx="2" fill="#4aa986" />
+    <rect x="36" y="6" width="10" height="66" rx="2" fill="url(#g1)" />
+    <!-- círculo tipo 'pizza' -->
+    <g transform="translate(64,20)">
+      <circle cx="18" cy="18" r="18" fill="#ffffff" opacity="0.06" />
+      <path d="M18 0 A18 18 0 0 1 36 18 L18 18 Z" fill="#5fb899"/>
+      <path d="M36 18 A18 18 0 0 1 18 36 L18 18 Z" fill="#3ca68d"/>
+    </g>
+  </g>
+
+  <!-- texto -->
+  <g transform="translate(110,58)">
+    <text x="0" y="0" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="26" fill="#f5f5f5">Portal</text>
+    <text x="0" y="26" font-family="Open Sans, Arial, sans-serif" font-weight="600" font-size="14" fill="#bfc9ce">Mashup</text>
+  </g>
+</svg>

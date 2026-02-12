@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal de Indicadores</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root{
+      --primary-font: 'Inter', sans-serif;
+      --secondary-font: 'Open Sans', sans-serif;
+
+      --color-primary-btn: #5fb899;
+      --color-primary-btn-hover: #3ca68d;
+      --color-tertiary-btn: #b88f5f;
+      --color-tertiary-btn-hover: #a16b3d;
+
+      --glow-primary: #2a6b55;
+
+      --text-light: #f0f0f0;
+      --text-lighter: #e0e0e0;
+      --text-muted: #b0b8c4;
+
+      --card-bg: rgba(0, 0, 0, 0.4);
+      --border-color: rgba(255, 255, 255, 0.18);
+      --background-dark: #0d1117;
+
+      --angle: -15deg;
+
+      /* Glows */
+      --glow-acesso: rgba(88, 199, 226, 0.5);
+      --glow-acompanhamento: rgba(88, 166, 255, 0.5);
+      --glow-gestacao: rgba(227, 179, 65, 0.5);
+      --glow-previne: rgba(247, 120, 186, 0.5);
+      --glow-bucal: rgba(163, 113, 247, 0.5);
+      --glow-crianca: rgba(126, 231, 135, 0.5);
+
+      --glow-carnaval: rgba(255, 196, 61, 0.5);
+      --glow-covid: rgba(88, 166, 255, 0.5);
+      --glow-influenza: rgba(163, 113, 247, 0.5);
+
+      --glow-reg-amb: rgba(88, 199, 226, 0.5);
+      --glow-reg-cat: rgba(126, 231, 135, 0.5);
+      --glow-reg-hosp: rgba(247, 120, 186, 0.5);
+      --glow-reg-proc: rgba(227, 179, 65, 0.5);
+      --glow-reg-qd: rgba(163, 113, 247, 0.5);
+
+      --glow-vac: rgba(126, 231, 135, 0.5);
+      --glow-ve: rgba(88, 166, 255, 0.5);
+    }
+
+    *{ margin:0; padding:0; box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+
+    body{
+      font-family: var(--primary-font);
+      background-color: var(--background-dark);
+      color: var(--text-light);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .background-image{
+      position: fixed;
+      top:0; left:0;
+      width:100vw; height:100vh;
+      object-fit: cover;
+      object-position: center center;
+      z-index:-2;
+    }
+
+    body::before{
+      content:'';
+      position: fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background: linear-gradient(180deg, rgba(13, 17, 23, 0.85) 0%, rgba(13, 17, 23, 0.65) 100%);
+      z-index:-1;
+    }
+
+    section{
+      height:100vh;
+      width:100%;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      position:relative;
+    }
+
+    .content-wrapper{
+      width:100%;
+      max-width:1400px;
+      margin:0 auto;
+      padding:0 2rem;
+    }
+
+    /* MENU DE NAVEGAÇÃO */
+    .nav-menu{
+      position: fixed;
+      top: 50%;
+      right: 2rem;
+      transform: translateY(-50%);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease, width 0.3s ease;
+      width: 16px;
+    }
+
+    .nav-menu.visible{
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav-menu:hover{
+      width: auto;
+    }
+
+    .nav-menu ul{
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .nav-menu li{
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .nav-menu a{
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .nav-menu a .nav-dot{
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .nav-menu a:hover .nav-dot,
+    .nav-menu a.active .nav-dot{
+      background: var(--color-primary-btn);
+      border-color: var(--color-primary-btn);
+      transform: scale(1.3);
+      box-shadow: 0 0 15px var(--color-primary-btn);
+    }
+
+    .nav-menu a .nav-label{
+      background: rgba(0, 0, 0, 0.9);
+      color: var(--text-light);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      white-space: nowrap;
+      font-size: 0.85rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      pointer-events: none;
+      border: 1px solid var(--border-color);
+      font-weight: 500;
+    }
+
+    .nav-menu:hover a .nav-label{
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* HERO */
+    .main-hero-section{
+      align-items:center;
+      text-align:center;
+      padding-bottom:5rem;
+    }
+
+    .content-overlay{
+      position:relative;
+      z-index:1;
+      padding:30px 40px;
+      background-color: rgba(0,0,0,0.4);
+      border-radius:12px;
+      max-width:900px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+      border: 1px solid var(--border-color);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+    }
+
+    #logo{
+      display: block;
+      max-width: 420px;
+      width: auto;
+      margin: 0 auto 25px;
+        transform: translateX(110px);
+        filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
+    }
+
+    .content-overlay h1{
+      font-weight:700;
+      font-size:2.0rem;
+      margin-bottom:0.4em;
+      text-shadow: 0 0 15px rgba(0,0,0,0.9);
+      line-height:1.2;
+    }
+
+    .content-overlay p{
+      font-family: var(--secondary-font);
+      color: var(--text-lighter);
+      font-size:1.3rem;
+      margin-bottom:2em;
+      max-width: 680px;
+      margin-left:auto;
+      margin-right:auto;
+      text-shadow: 0 0 8px rgba(0,0,0,0.7);
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 30px;
+      color:white;
+      text-decoration:none;
+      border-radius:8px;
+      font-weight:600;
+      transition: all 0.3s ease;
+      margin:8px 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      letter-spacing:0.5px;
+    }
+    .btn:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    .btn-01{ background-color: var(--color-primary-btn); }
+    .btn-01:hover{ background-color: var(--color-primary-btn-hover); }
+    .btn-03{ background-color: var(--color-tertiary-btn); }
+    .btn-03:hover{ background-color: var(--color-tertiary-btn-hover); }
+
+    .prefeitura-logo{
+      position:absolute;
+      bottom:90px;
+      width:160px;
+      opacity:0.7;
+      transition: opacity 0.3s ease;
+    }
+    .prefeitura-logo:hover{ opacity:1; }
+
+    .scroll-indicator{
+      position:absolute;
+      bottom:6rem;
+      left:50%;
+      transform: translateX(-50%);
+      color: var(--text-muted);
+      font-size:0.9rem;
+      text-decoration:none;
+      animation: bounce-down 2s infinite;
+      cursor:pointer;
+      z-index:10;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .scroll-indicator.hidden{
+      opacity:0;
+      pointer-events:none;
+      transform: translate(-50%, 20px);
+    }
+    .scroll-indicator i{ margin-right:8px; }
+
+    @keyframes bounce-down{
+      0%, 20%, 50%, 80%, 100%{ transform: translate(-50%, 0); }
+      40%{ transform: translate(-50%, -10px); }
+      60%{ transform: translate(-50%, -5px); }
+    }
+
+    /* SEÇÃO SOBRE */
+    .sobre-section{
+      padding: 3rem 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      justify-content: flex-start;
+    }
+
+    .sobre-section::-webkit-scrollbar{ width: 10px; }
+    .sobre-section::-webkit-scrollbar-track{ background: rgba(255,255,255,0.06); border-radius: 10px; }
+    .sobre-section::-webkit-scrollbar-thumb{ background: rgba(255,255,255,0.18); border-radius: 10px; }
+    .sobre-section::-webkit-scrollbar-thumb:hover{ background: rgba(255,255,255,0.28); }
+
+    .sobre-content{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .sobre-content h2{
+      font-size: 2rem;
+      color: var(--color-primary-btn);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .sobre-content h3{
+      font-size: 1.5rem;
+      color: var(--text-light);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .sobre-content p{
+      font-family: var(--secondary-font);
+      color: var(--text-lighter);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      text-align: justify;
+      font-size: 1.05rem;
+    }
+
+    .sobre-content ul{
+      font-family: var(--secondary-font);
+      color: var(--text-lighter);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      margin-left: 2rem;
+    }
+
+    .sobre-content ul li{
+      margin-bottom: 0.5rem;
+    }
+
+    /* Grid MVV (Missão, Visão, Valores) */
+    .mvv-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .mvv-card{
+      background: rgba(95, 184, 153, 0.05);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .mvv-card:hover{
+      background: rgba(95, 184, 153, 0.1);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .mvv-card .mvv-icon{
+      font-size: 3rem;
+      color: var(--color-primary-btn);
+      margin-bottom: 1rem;
+    }
+
+    .mvv-card h3{
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      color: var(--color-primary-btn);
+    }
+
+    .mvv-card p{
+      text-align: center;
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+
+    /* Sobre: layout lado a lado para Objetivo + Frentes */
+    .sobre-flex{
+      display:flex;
+      gap:2rem;
+      align-items:flex-start;
+      margin-top:1.5rem;
+      flex-wrap:wrap;
+    }
+    .sobre-flex .col{
+      flex:1 1 320px;
+      min-width:280px;
+    }
+
+    .sobre-content .contact-info{
+      margin-top: 2rem;
+      padding: 2rem;
+      background: rgba(95, 184, 153, 0.1);
+      border-left: 4px solid var(--color-primary-btn);
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .sobre-content .contact-info .contact-icon{
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-size: 3rem;
+      color: var(--color-primary-btn);
+      opacity: 0.3;
+    }
+
+    .sobre-content .contact-info h3{
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--color-primary-btn);
+    }
+
+    .sobre-content .contact-info h3 i{
+      font-size: 1.5rem;
+    }
+
+    .sobre-content .contact-info p{
+      margin-bottom: 0.5rem;
+      text-align: left;
+    }
+
+    .sobre-content .contact-info p i{
+      margin-right: 0.5rem;
+      color: var(--color-primary-btn);
+      width: 20px;
+    }
+
+    /* Responsivo MVV */
+    @media (max-width: 992px){
+      .mvv-grid{
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    /* Seções */
+    .modules-container{
+      align-items:center;
+      padding:2rem 0;
+    }
+
+    .section-title{
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 0.25rem;
+      text-align:center;
+    }
+    .section-subtitle{
+      font-family: var(--secondary-font);
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-top: 0.75rem;
+      text-align:center;
+    }
+
+    /* GRID padrão */
+    .modules-grid{
+      width:100%;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 5rem 4rem;
+    }
+
+    .module-card-wrapper{
+      opacity:0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      perspective:1000px;
+    }
+    .module-card-wrapper.visible{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    .module-card{
+      position:relative;
+      background: var(--card-bg);
+      border:1px solid var(--border-color);
+      border-radius:12px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding:2rem;
+      height:100%;
+      transform: skewX(var(--angle)) scale(1) translateY(0);
+      transform-origin: bottom left;
+      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease;
+      will-change: transform;
+    }
+
+    .module-card-wrapper:hover .module-card{
+      transform: skewX(0deg) scale(1.05) translateY(-15px);
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.4);
+    }
+
+    .module-card::before{
+      content:'';
+      position:absolute;
+      left: var(--mouse-x, 50%);
+      top: var(--mouse-y, 50%);
+      width:400px;
+      height:400px;
+      background: radial-gradient(circle at center, var(--glow-color, transparent) 0%, transparent 60%);
+      transform: translate(-50%, -50%);
+      opacity:0;
+      transition: opacity 0.4s ease;
+      pointer-events:none;
+    }
+    .module-card-wrapper:hover .module-card::before{ opacity:0.25; }
+
+    .card-content-wrapper{
+      transform: skewX(calc(var(--angle) * -1));
+      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      height:100%;
+      display:flex;
+      flex-direction:column;
+    }
+    .module-card-wrapper:hover .card-content-wrapper{ transform: skewX(0deg); }
+
+    .card-header{
+      display:flex;
+      align-items:center;
+      gap:1rem;
+      margin-bottom:1rem;
+    }
+
+    .card-icon{
+      flex-shrink:0;
+      font-size:1.5rem;
+      width:50px; height:50px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:10px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+      border:1px solid var(--border-color);
+    }
+
+    .card-header h2{
+      font-size:1.5rem;
+      color: var(--text-light);
+    }
+
+    .card-content p{
+      font-family: var(--secondary-font);
+      color: var(--text-muted);
+      line-height:1.6;
+      margin-bottom:1.5rem;
+      flex-grow:1;
+    }
+
+    .access-button{
+      position:absolute;
+      bottom:-20px;
+      right:20px;
+      background: var(--glow-primary);
+      border:1px solid var(--border-color);
+      color: var(--text-light);
+      padding: 0.6rem 1.5rem;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:600;
+      box-shadow: 0 0 20px -5px rgba(42, 107, 85, 0.7);
+      transform: skewX(calc(var(--angle) * -1)) translateY(0) scale(1);
+      transform-origin: bottom right;
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .module-card-wrapper:hover .access-button{
+      box-shadow: 0 5px 25px rgba(42, 107, 85, 0.8);
+      transform: skewX(0deg) translateY(-5px) scale(1.05);
+    }
+
+    /* Área padrão (sem scroll interno) */
+    .cards-scroll-area{ display:block; }
+
+    /* ======= REGRA: > 6 CARDS => 2 LINHAS + SCROLL HORIZONTAL ======= */
+    section.has-many-cards{
+      justify-content:flex-start;
+      padding: 2.5rem 0;
+    }
+
+    section.has-many-cards .cards-scroll-area{
+      overflow-x: auto;
+      overflow-y: hidden;
+      max-width: 100%;
+      padding-bottom: 24px; /* Aumentado de 14px para 24px */
+      margin-top: 1.5rem; /* Espaçamento adicional do topo */
+      -webkit-overflow-scrolling: touch;
+    }
+
+    section.has-many-cards .cards-scroll-area::-webkit-scrollbar{ height: 10px; }
+    section.has-many-cards .cards-scroll-area::-webkit-scrollbar-track{ background: rgba(255,255,255,0.06); border-radius: 10px; }
+    section.has-many-cards .cards-scroll-area::-webkit-scrollbar-thumb{ background: rgba(255,255,255,0.18); border-radius: 10px; }
+    section.has-many-cards .cards-scroll-area::-webkit-scrollbar-thumb:hover{ background: rgba(255,255,255,0.28); }
+
+    section.has-many-cards .modules-grid{
+      width: max-content;
+      grid-auto-flow: column;
+      grid-template-rows: repeat(2, auto);
+      grid-auto-columns: minmax(320px, 320px);
+      gap: 4rem 3rem;
+      padding-right: 10px;
+    }
+
+    section.has-many-cards .module-card-wrapper{
+      width: 320px;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px){
+      .content-overlay{ padding:50px 20px; margin:0 15px; }
+      #logo{ max-width:320px; width:100%; transform: translateX(80px); }
+      .content-overlay h1{ font-size:1.5rem; }
+      .content-overlay p{ font-size:1rem; }
+      .btn{ display:block; width: calc(100% - 60px); margin:10px auto; }
+      .modules-grid{ grid-template-columns: 1fr; gap: 4rem 2rem; }
+
+      section.has-many-cards .modules-grid{
+        grid-auto-columns: minmax(280px, 280px);
+      }
+      section.has-many-cards .module-card-wrapper{
+        width: 280px;
+      }
+
+      .nav-menu{
+        right: 1rem;
+      }
+
+      .scroll-indicator{
+        bottom:4rem;
+      }
+
+      .sobre-content{
+        padding: 1.5rem;
+      }
+
+      .sobre-content h2{
+        font-size: 1.5rem;
+      }
+
+      .sobre-content h3{
+        font-size: 1.2rem;
+      }
+
+      .nav-menu:hover{
+        width: auto;
+      }
+    }
+
+    /* Temas */
+    .module-card[data-theme="acesso"]{ --glow-color: var(--glow-acesso); }
+    .module-card[data-theme="acesso"] .card-icon{ color:#58c7e2; }
+    .module-card[data-theme="acompanhamento"]{ --glow-color: var(--glow-acompanhamento); }
+    .module-card[data-theme="acompanhamento"] .card-icon{ color:#58a6ff; }
+    .module-card[data-theme="gestacao"]{ --glow-color: var(--glow-gestacao); }
+    .module-card[data-theme="gestacao"] .card-icon{ color:#e3b341; }
+    .module-card[data-theme="previne"]{ --glow-color: var(--glow-previne); }
+    .module-card[data-theme="previne"] .card-icon{ color:#f778ba; }
+    .module-card[data-theme="bucal"]{ --glow-color: var(--glow-bucal); }
+    .module-card[data-theme="bucal"] .card-icon{ color:#a371f7; }
+    .module-card[data-theme="crianca"]{ --glow-color: var(--glow-crianca); }
+    .module-card[data-theme="crianca"] .card-icon{ color:#7ee787; }
+
+    .module-card[data-theme="carnaval"]{ --glow-color: var(--glow-carnaval); }
+    .module-card[data-theme="carnaval"] .card-icon{ color:#ffc43d; }
+    .module-card[data-theme="covid"]{ --glow-color: var(--glow-covid); }
+    .module-card[data-theme="covid"] .card-icon{ color:#58a6ff; }
+    .module-card[data-theme="influenza"]{ --glow-color: var(--glow-influenza); }
+    .module-card[data-theme="influenza"] .card-icon{ color:#a371f7; }
+
+    .module-card[data-theme="reg-amb"]{ --glow-color: var(--glow-reg-amb); }
+    .module-card[data-theme="reg-amb"] .card-icon{ color:#58c7e2; }
+    .module-card[data-theme="reg-cat"]{ --glow-color: var(--glow-reg-cat); }
+    .module-card[data-theme="reg-cat"] .card-icon{ color:#7ee787; }
+    .module-card[data-theme="reg-hosp"]{ --glow-color: var(--glow-reg-hosp); }
+    .module-card[data-theme="reg-hosp"] .card-icon{ color:#f778ba; }
+    .module-card[data-theme="reg-proc"]{ --glow-color: var(--glow-reg-proc); }
+    .module-card[data-theme="reg-proc"] .card-icon{ color:#e3b341; }
+    .module-card[data-theme="reg-qd"]{ --glow-color: var(--glow-reg-qd); }
+    .module-card[data-theme="reg-qd"] .card-icon{ color:#a371f7; }
+
+    .module-card[data-theme="vacinacao"]{ --glow-color: var(--glow-vac); }
+    .module-card[data-theme="vacinacao"] .card-icon{ color:#7ee787; }
+
+    .module-card[data-theme="ve"]{ --glow-color: var(--glow-ve); }
+    .module-card[data-theme="ve"] .card-icon{ color:#58a6ff; }
+
+    /* BACK TO TOP */
+    #back-to-top-btn{
+      position:fixed;
+      top:2rem;
+      left:50%;
+      color: var(--text-muted);
+      font-size:0.9rem;
+      text-decoration:none;
+      cursor:pointer;
+      z-index:1000;
+      opacity:0;
+      visibility:hidden;
+      transform: translate(-50%, -20px);
+      transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+      animation: bounce-up 2s infinite;
+    }
+    #back-to-top-btn.visible{
+      opacity:1;
+      visibility:visible;
+      transform: translate(-50%, 0);
+    }
+    #back-to-top-btn i{ margin-right:8px; }
+    #back-to-top-btn:hover{ color: var(--text-light); }
+
+    @keyframes bounce-up{
+      0%, 20%, 50%, 80%, 100%{ transform: translate(-50%, 0); }
+      40%{ transform: translate(-50%, 10px); }
+      60%{ transform: translate(-50%, 5px); }
+    }
+    /* Marca d'água (fixa, canto inferior direito) */
+    .watermark{
+      position: fixed;
+      right: 12px;
+      bottom: 12px;
+      color: rgba(255,255,255,0.12);
+      font-size: 0.85rem;
+      font-family: var(--secondary-font);
+      pointer-events: none;
+      z-index: 2000;
+      user-select: none;
+      backdrop-filter: none;
+      text-align: right;
+      padding: 4px 6px;
+      border-radius: 4px;
+    }
+    .site-footer{
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 36px; /* acima da marca d'água */
+      color: rgba(255,255,255,0.78);
+      font-size: 0.9rem;
+      font-family: var(--secondary-font);
+      pointer-events: none;
+      z-index: 2001;
+      background: rgba(0,0,0,0.28);
+      padding: 6px 10px;
+      border-radius: 6px;
+      text-align: center;
+    }
+    .return-portfolio{
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 3000;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+      transition: transform 0.15s ease, opacity 0.15s ease;
+      pointer-events: auto;
+    }
+    .return-portfolio:hover{ transform: translateY(-2px); opacity: 0.95; }
+    @media (max-width: 768px){ .return-portfolio{ top: 8px; left: 8px; font-size:0.95rem; } }
+  </style>
+</head>
+
+<body>
+  <img src="bg.png" alt="Imagem de fundo" class="background-image" />
+  <a href="../../index.html" class="return-portfolio btn btn-01" aria-label="Retornar ao Portfolio">Retornar ao Portfolio</a>
+
+  <!-- MENU DE NAVEGAÇÃO -->
+  <nav class="nav-menu" id="navMenu">
+    <ul>
+      <li>
+        <a href="#main-hero" data-section="0">
+          <span class="nav-label">Início</span>
+          <span class="nav-dot"></span>
+        </a>
+      </li>
+      <li>
+        <a href="#sobre-portal" data-section="1">
+          <span class="nav-label">Sobre o Portal</span>
+          <span class="nav-dot"></span>
+        </a>
+      </li>
+      <li>
+        <a href="#modulos-operacionais" data-section="2">
+          <span class="nav-label">Módulos Operacionais</span>
+          <span class="nav-dot"></span>
+        </a>
+      </li>
+      <li>
+        <a href="#modulos-tecnicos" data-section="3">
+          <span class="nav-label">Módulos Técnicos</span>
+          <span class="nav-dot"></span>
+        </a>
+      </li>
+      <li>
+        <a href="#modulos-estrategicos" data-section="4">
+          <span class="nav-label">Módulos Estratégicos</span>
+          <span class="nav-dot"></span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <a href="#main-hero" id="back-to-top-btn" aria-label="Voltar ao topo">
+    <i class="fa-solid fa-chevron-up"></i> Voltar ao Topo
+  </a>
+
+  <!-- HERO -->
+  <section id="main-hero" class="main-hero-section">
+      <div class="content-overlay">
+      <img id="logo" src="logo-portal.svg" alt="Logo do Portal" />
+      <h1>Seja Bem-vindo(a)!</h1>
+      <p>Acesse os principais indicadores e painéis do portal.</p>
+
+      <div class="buttons-container">
+        <a href="#sobre-portal" class="btn btn-03">Sobre o Portal</a>
+      </div>
+    </div>
+
+    <!-- logo institucional removido -->
+
+    <a href="#modulos-operacionais" class="scroll-indicator">
+      <i class="fa-solid fa-chevron-down"></i> Explorar Painéis
+    </a>
+  </section>
+
+  <!-- SEÇÃO SOBRE O PORTAL -->
+  <section id="sobre-portal" class="sobre-section">
+    <div class="content-wrapper">
+      <div class="sobre-content">
+        <h2>Sobre o Portal</h2>
+
+        <p>Este portal reúne painéis e indicadores integrados para apoiar análise e visualização de dados de forma segura e acessível. Os painéis apresentam séries temporais, distribuições territoriais e indicadores de desempenho em formatos interativos.</p>
+
+        <!-- Grid Missão, Visão e Valores -->
+        <div class="mvv-grid">
+          <div class="mvv-card">
+            <div class="mvv-icon">
+              <i class="fa-solid fa-bullseye"></i>
+            </div>
+            <h3>MISSÃO</h3>
+            <p>Fornecer informações e visualizações que apoiem gestores e analistas na tomada de decisão baseada em dados.</p>
+          </div>
+
+          <div class="mvv-card">
+            <div class="mvv-icon">
+              <i class="fa-solid fa-eye"></i>
+            </div>
+            <h3>VISÃO</h3>
+            <p>Fortalecer a cultura de uso de dados com informações confiáveis.</p>
+          </div>
+
+          <div class="mvv-card">
+            <div class="mvv-icon">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+            <h3>VALORES</h3>
+            <p>Ética; Confidencialidade; Inovação; Qualidade; Equidade; Colaboração; Responsabilidade.</p>
+          </div>
+        </div>
+
+        <div class="sobre-flex">
+          <div class="col">
+            <h3>OBJETIVO</h3>
+            <p>Fornecer informações para decisões orientadas por dados.</p>
+          </div>
+
+          <div class="col">
+            <h3>PRINCIPAIS FRENTES DE AÇÃO</h3>
+            <ul>
+              <li>Consolidação de indicadores para monitoramento;</li>
+              <li>Integração e visualização de dados de múltiplas fontes;</li>
+              <li>Gestão da plataforma e disponibilização de painéis;</li>
+            </ul>
+          </div>
+        </div>
+
+        
+    </div>
+  </section>
+
+  <!-- MÓDULOS OPERACIONAIS -->
+  <section id="modulos-operacionais" class="modules-container">
+    <div class="content-wrapper">
+      <div class="content-overlay" style="margin: 0 auto 2rem auto; text-align:center;">
+        <div class="section-title">Módulos Operacionais</div>
+        <div class="section-subtitle">Selecione um painel operacional para acessar os indicadores.</div>
+      </div>
+
+      <div class="cards-scroll-area">
+        <div class="modules-grid">
+          <div class="module-card-wrapper"><article class="module-card" data-theme="acesso"><div class="card-content-wrapper">
+            <div class="card-header"><div class="card-icon"><i class="fa-solid fa-door-open"></i></div><h2>Fluxo de Atendimento</h2></div>
+            <div class="card-content">
+              <ul>
+                <li>Portal de Agendamento e Fluxo de Atendimento</li>
+                <li>Registro de Demandas e Fila de Espera Analytics</li>
+                <li>Relatórios de Tempo de Espera e Atendimento</li>
+              </ul>
+            </div>
+          </div><a href="#" class="access-button">Acessar</a></article></div>
+
+          <div class="module-card-wrapper"><article class="module-card" data-theme="acompanhamento"><div class="card-content-wrapper">
+            <div class="card-header"><div class="card-icon"><i class="fa-solid fa-clipboard-check"></i></div><h2>Gestão de Casos</h2></div>
+            <div class="card-content">
+              <ul>
+                <li>Rastreador de Casos e Histórico</li>
+                <li>Agenda de Tarefas e Gestão de Casos</li>
+                <li>Indicadores de Continuidade Operacional</li>
+              </ul>
+            </div>
+          </div><a href="#" class="access-button">Acessar</a></article></div>
+
+          <div class="module-card-wrapper"><article class="module-card" data-theme="gestacao"><div class="card-content-wrapper">
+            <div class="card-header"><div class="card-icon"><i class="fa-solid fa-chart-column"></i></div><h2>Desempenho Operacional</h2></div>
+            <div class="card-content">
+              <ul>
+                <li>Painel de Produção e Produtividade</li>
+                <li>Monitor de Capacidade e Taxa de Ocupação</li>
+                <li>Relatórios de Eficiência e Indicadores Operacionais</li>
+              </ul>
+            </div>
+          </div><a href="#" class="access-button">Acessar</a></article></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÓDULOS TÉCNICOS -->
+  <section id="modulos-tecnicos" class="modules-container">
+    <div class="content-wrapper">
+      <div class="content-overlay" style="margin: 0 auto 2rem auto; text-align:center;">
+        <div class="section-title">Módulos Técnicos</div>
+        <div class="section-subtitle">Painéis técnicos e de qualidade de informação.</div>
+      </div>
+
+      <div class="cards-scroll-area">
+        <div class="modules-grid">
+          <div class="module-card-wrapper"><article class="module-card" data-theme="reg-qd"><div class="card-content-wrapper">
+            <div class="card-header"><div class="card-icon"><i class="fa-solid fa-clipboard-check"></i></div><h2>Qualidade de Dados</h2></div>
+            <div class="card-content">
+              <ul>
+                <li>Validador de Registros e Métricas de Completude</li>
+                <li>Ferramenta de Auditoria e Correção de Dados</li>
+                <li>Dashboards de Indicadores de Qualidade</li>
+              </ul>
+            </div>
+          </div><a href="#" class="access-button">Acessar</a></article></div>
+
+          <div class="module-card-wrapper"><article class="module-card" data-theme="reg-cat"><div class="card-content-wrapper">
+            <div class="card-header"><div class="card-icon"><i class="fa-solid fa-book-medical"></i></div><h2>Catálogo de Serviços</h2></div>
+            <div class="card-content">
+              <ul>
+                <li>Consulta de Serviços e Mapa de Oferta</li>
+                <li>Gerenciador de Tipologias e Habilitações</li>
+                <li>Pesquisa por Ponto de Serviço e Capacidade</li>
+              </ul>
+            </div>
+          </div><a href="#" class="access-button">Acessar</a></article></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÓDULOS ESTRATÉGICOS -->
+  <section id="modulos-estrategicos" class="modules-container">
+    <div class="content-wrapper">
+      <div class="content-overlay" style="margin: 0 auto 2rem auto; text-align:center;">
+        <div class="section-title">Módulos Estratégicos</div>
+        <div class="section-subtitle">Painéis para apoio à governança e planejamento.</div>
+      </div>
+
+      <div class="cards-scroll-area">
+        <div class="modules-grid">
+          <div class="module-card-wrapper"><article class="module-card" data-theme="vacinacao"><div class="card-content-wrapper">
+            <div class="card-header"><div class="card-icon"><i class="fa-solid fa-chart-pie"></i></div><h2>Cobertura e Programas</h2></div>
+            <div class="card-content">
+              <ul>
+                <li>Monitor de Cobertura e Painel de Campanhas</li>
+                <li>Gestão de Metas e Acompanhamento de Programas</li>
+                <li>Relatórios de Alcance por Público-Alvo</li>
+              </ul>
+            </div>
+          </div><a href="#" class="access-button">Acessar</a></article></div>
+
+          <div class="module-card-wrapper"><article class="module-card" data-theme="ve"><div class="card-content-wrapper">
+            <div class="card-header"><div class="card-icon"><i class="fa-solid fa-signal"></i></div><h2>Monitoramento Estratégico</h2></div>
+            <div class="card-content">
+              <ul>
+                <li>Dashboard de Planejamento e Cenários</li>
+                <li>Análise de Tendências e Projeções</li>
+                <li>Painel de Avaliação de Políticas e Resultados</li>
+              </ul>
+            </div>
+          </div><a href="#" class="access-button">Acessar</a></article></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const sections = document.querySelectorAll("section");
+      const scrollIndicator = document.querySelector(".scroll-indicator");
+      const backToTopButton = document.getElementById("back-to-top-btn");
+      const navMenu = document.getElementById("navMenu");
+      const navLinks = navMenu.querySelectorAll("a");
+
+      let currentSectionIndex = 0;
+      let isScrolling = false;
+      const scrollDebounceTime = 1000;
+
+      const scrollToSection = (index) => {
+        if (index >= 0 && index < sections.length) {
+          isScrolling = true;
+          sections[index].scrollIntoView({ behavior: "smooth" });
+          currentSectionIndex = index;
+
+          // Atualiza scroll indicator
+          if (scrollIndicator) scrollIndicator.classList.toggle("hidden", index > 0);
+          
+          // Atualiza back to top e menu (visível a partir da seção 1, que é "Sobre o Portal")
+          backToTopButton.classList.toggle("visible", index >= 1);
+          navMenu.classList.toggle("visible", index >= 1);
+
+          // Atualiza link ativo no menu
+          navLinks.forEach(link => link.classList.remove("active"));
+          const activeLink = navMenu.querySelector(`a[data-section="${index}"]`);
+          if (activeLink) activeLink.classList.add("active");
+
+          setTimeout(() => { isScrolling = false; }, scrollDebounceTime);
+        }
+      };
+
+            // Regra automática: se uma seção tiver mais de 6 cards, ativa modo scroll horizontal em 2 linhas
+      document.querySelectorAll("section").forEach((sec) => {
+        const cards = sec.querySelectorAll(".module-card-wrapper");
+        if (cards.length > 6) {
+          sec.classList.add("has-many-cards");
+        }
+      });
+
+      // Wheel: se estiver em seção com muitos cards, usa o wheel para rolar pro lado.
+      window.addEventListener("wheel", (e) => {
+        if (isScrolling) return;
+
+        const activeSection = sections[currentSectionIndex];
+        const hasMany = activeSection && activeSection.classList.contains("has-many-cards");
+        const scroller = activeSection ? activeSection.querySelector(".cards-scroll-area") : null;
+
+        if (hasMany && scroller) {
+          const delta = e.deltaY;
+          const maxScrollLeft = scroller.scrollWidth - scroller.clientWidth;
+
+          const atStart = scroller.scrollLeft <= 0;
+          const atEnd = Math.ceil(scroller.scrollLeft) >= Math.floor(maxScrollLeft);
+
+          if ((delta > 0 && !atEnd) || (delta < 0 && !atStart)) {
+            e.preventDefault();
+            scroller.scrollLeft += delta;
+            return;
+          }
+        }
+
+        e.preventDefault();
+        if (e.deltaY > 0) scrollToSection(currentSectionIndex + 1);
+        else scrollToSection(currentSectionIndex - 1);
+      }, { passive: false });
+
+      if (scrollIndicator) {
+        scrollIndicator.addEventListener("click", (e) => {
+          e.preventDefault();
+          scrollToSection(2); // Pula para a seção de painéis (agora índice 2)
+        });
+      }
+
+      backToTopButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        scrollToSection(0);
+      });
+
+      // Navegação pelo menu
+      navLinks.forEach((link, index) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const sectionIndex = parseInt(link.getAttribute("data-section"));
+          scrollToSection(sectionIndex);
+        });
+      });
+
+      // Observer + mouse glow
+      const wrappers = document.querySelectorAll(".module-card-wrapper");
+      if (wrappers.length > 0) {
+        const cardObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            entry.target.classList.toggle("visible", entry.isIntersecting);
+          });
+        }, { threshold: 0.2 });
+
+        wrappers.forEach((wrapper) => {
+          cardObserver.observe(wrapper);
+
+          const card = wrapper.querySelector(".module-card");
+          if (card) {
+            card.addEventListener("mousemove", (e) => {
+              const rect = card.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              card.style.setProperty("--mouse-x", `${x}px`);
+              card.style.setProperty("--mouse-y", `${y}px`);
+            });
+          }
+        });
+      }
+    });
+  </script>
+  <footer class="site-footer">© 2026 - Portfolio de Business Intelligence | Rodrigo Santos<br>Desenvolvido com ❤ por um Analista de BI apaixonado por dados</footer>
+  <div class="watermark">Projeto: Portal Mashup (Anonimizado)</div>
+</body>
+</html>
+
+
