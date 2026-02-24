@@ -255,4 +255,97 @@ if (btnCurriculo) {
     });
 }
 
+// Navegação entre seções com setas (↑/↓), PageUp/PageDown, Home/End
+(function sectionArrowNavigation() {
+  const sectionSelector = 'section[id]'; // usa todas as <section id="...">
+  let isScrolling = false;
+
+  function getSections() {
+    return Array.from(document.querySelectorAll(sectionSelector))
+      // se quiser ignorar alguma seção, filtre aqui
+      .filter(sec => sec.offsetParent !== null);
+  }
+
+  // Define a "seção atual" como a que tem o topo mais próximo do topo da viewport
+  function getCurrentSectionIndex(sections) {
+    const viewportTop = 0;
+    let bestIndex = 0;
+    let bestDistance = Infinity;
+
+    sections.forEach((sec, idx) => {
+      const rect = sec.getBoundingClientRect();
+      const distance = Math.abs(rect.top - viewportTop);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        bestIndex = idx;
+      }
+    });
+
+    return bestIndex;
+  }
+
+  function scrollToSection(index) {
+    const sections = getSections();
+    if (!sections.length) return;
+
+    const target = sections[Math.max(0, Math.min(index, sections.length - 1))];
+    if (!target) return;
+
+    isScrolling = true;
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // cooldown para evitar múltiplos disparos enquanto anima
+    window.setTimeout(() => {
+      isScrolling = false;
+    }, 700);
+  }
+
+  function scrollNext() {
+    const sections = getSections();
+    const current = getCurrentSectionIndex(sections);
+    scrollToSection(current + 1);
+  }
+
+  function scrollPrev() {
+    const sections = getSections();
+    const current = getCurrentSectionIndex(sections);
+    scrollToSection(current - 1);
+  }
+
+  // Expor funções se você quiser ligar em botões (opcional)
+  window.scrollNextSection = scrollNext;
+  window.scrollPrevSection = scrollPrev;
+
+  window.addEventListener('keydown', (e) => {
+    // não interferir quando estiver digitando
+    const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+    const isTypingField = tag === 'input' || tag === 'textarea' || e.target.isContentEditable;
+    if (isTypingField) return;
+
+    if (isScrolling) return;
+
+    // ↓ ou PageDown: próxima seção
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      e.preventDefault();
+      scrollNext();
+    }
+
+    // ↑ ou PageUp: seção anterior
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      scrollPrev();
+    }
+
+    // Home: primeira; End: última
+    if (e.key === 'Home') {
+      e.preventDefault();
+      scrollToSection(0);
+    }
+    if (e.key === 'End') {
+      e.preventDefault();
+      const sections = getSections();
+      scrollToSection(sections.length - 1);
+    }
+  }, { passive: false });
+})();
 
