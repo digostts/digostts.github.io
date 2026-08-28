@@ -159,45 +159,72 @@ const imageModal = document.getElementById('imageModal');
 const modalImage = document.getElementById('modalImage');
 const modalTitle = document.getElementById('modalTitle');
 
-// Array com informações dos projetos (em ordem)
-const projectImages = [
-    { image: 'imagens/governança.png', title: 'Arquitetura de Governança de Dados em BI' },
-    { image: 'imagens/automacao.png', title: 'Automação de Processos BI' },
-    { image: 'imagens/pipeline.png', title: 'Pipeline de Dados Automatizado' },
-    { image: 'imagens/dashboard.png', title: 'Dashboard Executivo Consolidado' },
-    { image: 'imagens/extensao.png', title: 'Extensão Customizada' },
-    { image: 'imagens/app.png', title: 'App de Coleta de Dados' }
-];
+const projectImagesByCategory = {
+    dashboards: [
+        { image: 'imagens/dashboards-em-destaque/carnaval.svg', title: 'Carnaval' },
+        { image: 'imagens/dashboards-em-destaque/tuberculose.svg', title: 'Tuberculose' },
+        { image: 'imagens/dashboards-em-destaque/saude-coletiva.svg', title: 'Saúde Coletiva' },
+        { image: 'imagens/dashboards-em-destaque/planejamento-recursos.svg', title: 'Planejamento de Recursos' },
+        { image: 'imagens/dashboards-em-destaque/pmo-dados.svg', title: 'PMO da equipe de desenvolvimento de dados' }
+    ],
+    predicoes: [
+        { image: 'imagens/predicoes-em-destaque/obitos-predicao.svg', title: 'Óbitos com Predição' },
+        { image: 'imagens/predicoes-em-destaque/previsao-gasto-empresa.svg', title: 'Previsão de Gasto da Empresa' },
+        { image: 'imagens/predicoes-em-destaque/previsao-valor-acao.svg', title: 'Previsão de Valor de Ação' }
+    ],
+    aplicativos: [
+        { image: 'imagens/aplicativos-desenvolvidos/zapflow.svg', title: 'Zapflow' },
+        { image: 'imagens/aplicativos-desenvolvidos/horacerta.svg', title: 'HoraCerta' }
+    ],
+    automacoes: [
+        { image: 'imagens/automacoes-desenvolvidas/governanca-acesso.svg', title: 'Governança de Acesso com Power Platform' },
+        { image: 'imagens/automacoes-desenvolvidas/preenchimento-formularios.svg', title: 'Preenchimento de Formulários em Massa' },
+        { image: 'imagens/automacoes-desenvolvidas/disparo-email-massa.svg', title: 'Disparo de E-mails em Massa' }
+    ]
+};
 
+let activeProjectImages = [];
 let currentImageIndex = 0;
 
+function getProjectCategory(imagePath) {
+    if (imagePath.includes('dashboards-em-destaque')) return 'dashboards';
+    if (imagePath.includes('predicoes-em-destaque')) return 'predicoes';
+    if (imagePath.includes('aplicativos-desenvolvidos')) return 'aplicativos';
+    if (imagePath.includes('automacoes-desenvolvidas')) return 'automacoes';
+    return 'dashboards';
+}
+
 // Abrir modal com imagem
-function openImageModal(imagePath, projectName) {
-    // Encontra o índice da imagem
-    currentImageIndex = projectImages.findIndex(proj => proj.image === imagePath);
+function openImageModal(imagePath, projectName, category = getProjectCategory(imagePath)) {
+    activeProjectImages = projectImagesByCategory[category] || projectImagesByCategory.dashboards;
+    currentImageIndex = activeProjectImages.findIndex(proj => proj.image === imagePath);
     if (currentImageIndex === -1) currentImageIndex = 0;
-    
-    displayCurrentImage();
+
+    modalImage.src = imagePath;
+    modalTitle.textContent = projectName || activeProjectImages[currentImageIndex].title;
     imageModal.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
 
 // Exibir imagem atual
 function displayCurrentImage() {
-    const project = projectImages[currentImageIndex];
+    const project = activeProjectImages[currentImageIndex];
+    if (!project) return;
     modalImage.src = project.image;
     modalTitle.textContent = project.title;
 }
 
 // Próxima imagem
 function nextImage() {
-    currentImageIndex = (currentImageIndex + 1) % projectImages.length;
+    if (!activeProjectImages.length) return;
+    currentImageIndex = (currentImageIndex + 1) % activeProjectImages.length;
     displayCurrentImage();
 }
 
 // Imagem anterior
 function previousImage() {
-    currentImageIndex = (currentImageIndex - 1 + projectImages.length) % projectImages.length;
+    if (!activeProjectImages.length) return;
+    currentImageIndex = (currentImageIndex - 1 + activeProjectImages.length) % activeProjectImages.length;
     displayCurrentImage();
 }
 
@@ -214,12 +241,13 @@ document.querySelectorAll('.btn-visualizar').forEach(btn => {
         if (this.tagName === 'A' || this.getAttribute('href')) {
             return;
         }
-        
+
         e.preventDefault();
         const imagePath = this.getAttribute('data-image');
         const projectCard = this.closest('.projeto-card');
         const projectName = projectCard.querySelector('.projeto-header h3').textContent;
-        openImageModal(imagePath, projectName);
+        const category = this.getAttribute('data-category') || getProjectCategory(imagePath);
+        openImageModal(imagePath, projectName, category);
     });
 });
 
