@@ -28,27 +28,26 @@
                     <i class="fas fa-chart-line"></i>
                     <span>Rodrigo Santos</span>
                 </div>
-                <ul class="nav-menu">
+                <ul id="menu-principal" class="nav-menu">
                     <li><a href="#home" class="nav-link">Início</a></li>
                     <li><a href="#sobre" class="nav-link">Sobre</a></li>
                     <li><a href="#skills" class="nav-link">Habilidades</a></li>
                     <li><a href="#experiencia" class="nav-link">Experiência</a></li>
                     <li><a href="#projetos" class="nav-link">Projetos</a></li>
-                    <li><a href="#aplicativos" class="nav-link">Aplicativos</a></li>
-                    <li><a href="#automacoes" class="nav-link">Automações</a></li>
                     <li><a href="#contato" class="nav-link">Contato</a></li>
                 </ul>
-                <div class="hamburger">
+                <button class="hamburger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </button>
             </div>
         </nav>
     </header>
 
      <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="hero-data-particles" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><i class="fas fa-chart-line"></i><i class="fas fa-database"></i><i class="fas fa-code-branch"></i></div>
         <div class="container">
             <div class="hero-content">
                 <div class="hero-header">
@@ -108,12 +107,13 @@
                     <p>
                         Ao longo da carreira, desenvolvi mais de <strong><span id="dashboardsCount2">50</span> dashboards interativos</strong>, 
                         entreguei mais de <strong><span id="reportsCount2">200</span> relatórios analíticos</strong> e implementei projetos 
-                        end-to-end em áreas como <strong>saúde pública</strong>, <strong>governança de dados</strong>, <strong>gestão de pessoas</strong>, 
+                        end-to-end em áreas como <strong>saúde pública</strong>, <strong>setor automotivo</strong>, <strong>vendas comerciais</strong>, 
+                        <strong>finanças no segmento de gás</strong>, <strong>governança de dados</strong>, <strong>gestão de pessoas</strong>, 
                         <strong>planejamento</strong> e <strong>automação operacional</strong>.
                     </p>
                     <p>
                         Hoje, além do BI, estou em formação em <strong>Inteligência Artificial e Ciência de Dados</strong>, ampliando minha atuação para 
-                        <strong>modelagem preditiva</strong>, análise avançada e soluções com maior valor estratégico para negócios, serviços públicos e operações complexas.
+                        <strong>modelagem preditiva, estatística aplicada, preparação de dados, séries temporais</strong> e análise avançada para negócios, serviços públicos e operações complexas.
                     </p>
                 </div>
                 <div class="sobre-icons">
@@ -140,12 +140,13 @@
     <!-- Skills -->
     <section id="skills" class="skills">
         <div class="container">
-            <h2 class="section-title">Habilidades & Tecnologias</h2>
+            <h2 class="section-title">Minhas Habilidades em Ferramentas &amp; Tecnologias</h2>
             
             <!-- Ferramentas BI -->
             <div class="skills-category">
-                <h3><i class="fas fa-tools"></i> Ferramentas de Business Intelligence</h3>
-                <div class="skills-grid">
+                <h3><i class="fas fa-tools"></i> Ferramentas de Business Intelligence e Analytics Automation</h3>
+                <div class="carousel-controls skills-carousel-controls"><div><button class="carousel-button skill-carousel-prev" aria-label="Ferramentas anteriores"><i class="fas fa-arrow-left"></i></button><button class="carousel-button skill-carousel-next" aria-label="Próximas ferramentas"><i class="fas fa-arrow-right"></i></button></div></div>
+                <div class="skills-grid skills-carousel" data-skill-carousel>
                     <div class="skill-card primary-skill">
                         <div class="skill-icon">
                             <i class="fas fa-chart-pie"></i>
@@ -156,10 +157,10 @@
                         </div>
                         <span class="skill-badge">Avançado</span>
                         <ul class="skill-details">
-                            <li>Desenvolvimento de Dashboards Complexos</li>
-                            <li>Criação de Extensões Customizadas</li>
-                            <li>Implementação de Regras de Acesso (Section Access)</li>
-                            <li>Otimização de Data Models</li>
+                            <li>Dashboards complexos</li>
+                            <li>Extensões customizadas</li>
+                            <li>Regras de acesso (Section Access)</li>
+                            <li>Otimização de modelos de dados</li>
                         </ul>
                     </div>
 
@@ -185,12 +186,14 @@
                         </div>
                         <h4>Alteryx</h4>
                         <div class="skill-level">
-                            <div class="skill-bar" style="width: 75%"></div>
+                            <div class="skill-bar" style="width: 80%"></div>
                         </div>
                         <span class="skill-badge">Intermediário</span>
                         <ul class="skill-details">
-                            <li>ETL e Preparação de Dados</li>
-                            <li>Workflows Automatizados</li>
+                            <li>ETL/ELT e preparação de dados</li>
+                            <li>Workflows analíticos automatizados</li>
+                            <li>Qualidade e validação de dados</li>
+                            <li>Integração de fontes e relatórios</li>
                         </ul>
                     </div>
 
@@ -241,6 +244,25 @@
                 </div>
             </div>
 
+            <!-- Ciência de Dados -->
+            <div class="skills-category">
+                <h3><i class="fas fa-brain"></i> Ciência de Dados &amp; IA</h3>
+                <div class="skills-grid skills-carousel">
+                    <div class="skill-card"><div class="skill-icon"><i class="fas fa-broom"></i></div><h4>Preparação de Dados</h4><ul class="skill-details"><li>Coleta, limpeza e transformação</li><li>Análise exploratória de dados</li><li>Qualidade e consistência</li></ul></div>
+                    <div class="skill-card"><div class="skill-icon"><i class="fas fa-chart-line"></i></div><h4>Modelagem Preditiva</h4><ul class="skill-details"><li>Regressão e classificação</li><li>Séries temporais e previsão</li><li>Avaliação de modelos</li></ul></div>
+                    <div class="skill-card"><div class="skill-icon"><i class="fas fa-calculator"></i></div><h4>Estatística Aplicada</h4><ul class="skill-details"><li>Indicadores e tendências</li><li>Distribuições e amostragem</li><li>Comunicação de resultados</li></ul></div>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <h3><i class="fas fa-network-wired"></i> Engenharia de Dados &amp; Big Data</h3>
+                <div class="skills-grid">
+                    <div class="skill-card"><div class="skill-icon"><i class="fas fa-stream"></i></div><h4>Pipelines de Dados</h4><ul class="skill-details"><li>ETL/ELT e orquestração de fluxos</li><li>Validação e qualidade de dados</li><li>Cargas incrementais e monitoramento</li></ul></div>
+                    <div class="skill-card"><div class="skill-icon"><i class="fas fa-server"></i></div><h4>Big Data &amp; Lakehouse</h4><ul class="skill-details"><li>Fundamentos de processamento distribuído</li><li>Data Lake e camadas de dados</li><li>Modelagem para escala analítica</li></ul></div>
+                    <div class="skill-card"><div class="skill-icon"><i class="fas fa-plug"></i></div><h4>Integração de Dados</h4><ul class="skill-details"><li>APIs, arquivos e bancos relacionais</li><li>Consolidação de fontes diversas</li><li>Rastreabilidade e governança</li></ul></div>
+                </div>
+            </div>
+
             <!-- Power Platform -->
             <div class="skills-category">
                 <h3><i class="fas fa-bolt"></i> Microsoft Power Platform</h3>
@@ -250,10 +272,6 @@
                             <i class="fas fa-robot"></i>
                         </div>
                         <h4>Power Automate</h4>
-                        <div class="skill-level">
-                            <div class="skill-bar" style="width: 75%"></div>
-                        </div>
-                        <span class="skill-badge">Intermediário</span>
                         <ul class="skill-details">
                             <li>Automação de Processos</li>
                             <li>Fluxos de Trabalho</li>
@@ -266,22 +284,24 @@
                             <i class="fas fa-mobile-alt"></i>
                         </div>
                         <h4>Power Apps</h4>
-                        <div class="skill-level">
-                            <div class="skill-bar" style="width: 50%"></div>
-                        </div>
-                        <span class="skill-badge">Básico</span>
                         <ul class="skill-details">
                             <li>Aplicações Low-Code</li>
                             <li>Formulários Personalizados</li>
                         </ul>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fab fa-microsoft"></i></div>
+                        <h4>Microsoft 365</h4>
+                        <ul class="skill-details"><li>SharePoint, Lists e Excel</li><li>Organização de dados e documentos</li><li>Integração com Power Platform</li></ul>
                     </div>
                 </div>
             </div>
 
             <!-- Programação & Dados -->
             <div class="skills-category">
-                <h3><i class="fas fa-code"></i> Programação & Banco de Dados</h3>
-                <div class="skills-grid">
+                <h3><i class="fas fa-code"></i> Programação, Dados &amp; Desenvolvimento Web</h3>
+                <div class="carousel-controls skills-carousel-controls"><div><button class="carousel-button skill-carousel-prev" aria-label="Tecnologias anteriores"><i class="fas fa-arrow-left"></i></button><button class="carousel-button skill-carousel-next" aria-label="Próximas tecnologias"><i class="fas fa-arrow-right"></i></button></div></div>
+                <div class="skills-grid skills-carousel" data-skill-carousel>
                     <div class="skill-card">
                         <div class="skill-icon">
                             <i class="fab fa-python"></i>
@@ -317,6 +337,8 @@
                             <li>Stored Procedures</li>
                         </ul>
                     </div>
+                    <div class="skill-card"><div class="skill-icon"><i class="fab fa-html5"></i></div><h4>HTML &amp; CSS</h4>
+                    <ul class="skill-details"><li>Interfaces responsivas</li><li>Estrutura e estilos web</li><li>Visualização de dados</li></ul></div>
                 </div>
             </div>
 
@@ -340,22 +362,22 @@
 
             <!-- Metodologias -->
             <div class="skills-category">
-                <h3><i class="fas fa-tasks"></i> Metodologias Ágeis</h3>
+                <h3><i class="fas fa-tasks"></i> Metodologias e Práticas de Entrega</h3>
                 <div class="methodology-grid">
                     <div class="method-card">
                         <i class="fas fa-sync-alt"></i>
                         <h4>Scrum</h4>
-                        <p>Desenvolvimento iterativo e incremental</p>
+                        <p>Organização de entregas iterativas, alinhamento com áreas de negócio e evolução contínua da solução.</p><ul class="method-details"><li>Sprints e priorização</li><li>Ritos de acompanhamento</li><li>Melhoria contínua</li></ul>
                     </div>
                     <div class="method-card">
                         <i class="fas fa-bullseye"></i>
                         <h4>OKR</h4>
-                        <p>Objetivos e Resultados-Chave</p>
+                        <p>Conexão entre objetivos estratégicos, indicadores mensuráveis e acompanhamento de resultados.</p><ul class="method-details"><li>Metas orientadas a dados</li><li>Indicadores de resultado</li><li>Foco e transparência</li></ul>
                     </div>
                     <div class="method-card">
                         <i class="fas fa-users"></i>
                         <h4>Agile</h4>
-                        <p>Colaboração e adaptação contínua</p>
+                        <p>Forma de trabalho colaborativa para entregar valor com rapidez e adaptar-se às mudanças.</p><ul class="method-details"><li>Feedback frequente</li><li>Entrega incremental</li><li>Comunicação entre áreas</li></ul>
                     </div>
                 </div>
             </div>
@@ -464,11 +486,11 @@
                             <ul class="experience-list">
                                 <li>
                                     <i class="fas fa-check-circle"></i>
-                                    <strong>Power BI para DataScience</strong>
+                                    <strong>Power BI para Ciência de Dados</strong>
                                 </li>
                                 <li>
                                     <i class="fas fa-check-circle"></i>
-                                    <strong>Ciências de Dados 3.0</strong>
+                                    <strong>Ciência de Dados 3.0</strong>
                                 </li>
                                 <li>
                                     <i class="fas fa-check-circle"></i>
@@ -486,11 +508,20 @@
         </div>
     </section>
 
-    <!-- Dashboards em Destaque -->
-    <section id="projetos" class="projetos">
+    <!-- Projetos -->
+    <section id="projetos" class="projetos projetos-hub">
         <div class="container">
-            <h2 class="section-title">Dashboards em Destaque</h2>
-            <div class="projetos-grid">
+            <h2 class="section-title">Projetos</h2>
+            <p class="section-subtitle">Explore as frentes do portfólio. Selecione uma categoria e navegue pelos cases em destaque.</p>
+            <div class="project-tabs" role="tablist" aria-label="Categorias de projetos">
+                <button class="project-tab active" data-project-category="dashboards" role="tab" aria-selected="true"><i class="fas fa-chart-pie"></i> Dashboards</button>
+                <button class="project-tab" data-project-category="predicoes" role="tab" aria-selected="false"><i class="fas fa-brain"></i> Predições</button>
+                <button class="project-tab" data-project-category="aplicativos" role="tab" aria-selected="false"><i class="fas fa-mobile-alt"></i> Aplicativos</button>
+                <button class="project-tab" data-project-category="automacoes" role="tab" aria-selected="false"><i class="fas fa-cogs"></i> Automações</button>
+            </div>
+            <div class="project-panel active" data-project-panel="dashboards">
+                <div class="carousel-controls"><p>Dashboards em destaque</p><div><button class="carousel-button carousel-prev" aria-label="Projetos anteriores"><i class="fas fa-arrow-left"></i></button><button class="carousel-button carousel-next" aria-label="Próximos projetos"><i class="fas fa-arrow-right"></i></button></div></div>
+                <div class="project-carousel">
                 <div class="projeto-card">
                     <div class="projeto-header">
                         <i class="fas fa-heartbeat"></i>
@@ -502,9 +533,6 @@
                         <span class="tag">Saúde</span>
                         <span class="tag">Monitoramento</span>
                     </div>
-                    <button class="btn-visualizar" data-category="dashboards" data-image="imagens/dashboards-em-destaque/carnaval.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
                 </div>
 
                 <div class="projeto-card">
@@ -518,9 +546,6 @@
                         <span class="tag">Saúde Pública</span>
                         <span class="tag">Busca Ativa</span>
                     </div>
-                    <button class="btn-visualizar" data-category="dashboards" data-image="imagens/dashboards-em-destaque/tuberculose.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
                 </div>
 
                 <div class="projeto-card">
@@ -534,15 +559,12 @@
                         <span class="tag">Saúde Coletiva</span>
                         <span class="tag">Análise de Dados</span>
                     </div>
-                    <button class="btn-visualizar" data-category="dashboards" data-image="imagens/dashboards-em-destaque/saude-coletiva.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
                 </div>
 
                 <div class="projeto-card">
                     <div class="projeto-header">
                         <i class="fas fa-users-cog"></i>
-                        <h3>Planejamento de Recursos</h3>
+                        <h3>Planejamento de Recursos para Veículos</h3>
                     </div>
                     <p>Dashboard de gestão de pessoas em multinacional automotiva, com análise de pessoas planejadas, alocadas e efetivas em projetos, consolidando indicadores de capacidade e demanda.</p>
                     <div class="projeto-tags">
@@ -550,9 +572,6 @@
                         <span class="tag">DAX</span>
                         <span class="tag">Gestão de Pessoas</span>
                     </div>
-                    <button class="btn-visualizar" data-category="dashboards" data-image="imagens/dashboards-em-destaque/planejamento-recursos.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
                 </div>
 
                 <div class="projeto-card">
@@ -566,35 +585,15 @@
                         <span class="tag">PMO</span>
                         <span class="tag">Gestão</span>
                     </div>
-                    <button class="btn-visualizar" data-category="dashboards" data-image="imagens/dashboards-em-destaque/pmo-dados.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
                 </div>
 
-                <div class="projeto-card">
-                    <div class="projeto-header">
-                        <i class="fas fa-th-large"></i>
-                        <h3>Mashup Agravos</h3>
-                    </div>
-                    <p>Mashup em Qlik Sense com seis agravos selecionados para monitoramento, reunindo visualizações em uma interface integrada para análise comparativa e controle operacional.</p>
-                    <div class="projeto-tags">
-                        <span class="tag">Qlik Sense</span>
-                        <span class="tag">Mashup</span>
-                        <span class="tag">BI</span>
-                    </div>
-                    <a href="Projetos/Portal Mashup/Portal Mashup.html" class="btn-visualizar" title="Visualizar projeto completo">
-                        <i class="fas fa-external-link-alt"></i> Visualizar Projeto
-                    </a>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- Predições em Destaque -->
-    <section id="predicoes" class="projetos">
-        <div class="container">
-            <h2 class="section-title">Predições em Destaque</h2>
-            <div class="projetos-grid">
+    <template id="project-cards">
+        <div class="project-panel" data-project-panel="predicoes"><div class="carousel-controls"><p>Predições em destaque</p><div><button class="carousel-button carousel-prev" aria-label="Projetos anteriores"><i class="fas fa-arrow-left"></i></button><button class="carousel-button carousel-next" aria-label="Próximos projetos"><i class="fas fa-arrow-right"></i></button></div></div><div class="project-carousel">
                 <div class="projeto-card">
                     <div class="projeto-header">
                         <i class="fas fa-brain"></i>
@@ -606,9 +605,6 @@
                         <span class="tag">Predição</span>
                         <span class="tag">Saúde</span>
                     </div>
-                    <button class="btn-visualizar" data-category="predicoes" data-image="imagens/predicoes-em-destaque/obitos-predicao.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
                 </div>
 
                 <div class="projeto-card">
@@ -622,9 +618,6 @@
                         <span class="tag">Ciência de Dados</span>
                         <span class="tag">Financeiro</span>
                     </div>
-                    <button class="btn-visualizar" data-category="predicoes" data-image="imagens/predicoes-em-destaque/previsao-gasto-empresa.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
                 </div>
 
                 <div class="projeto-card">
@@ -638,20 +631,11 @@
                         <span class="tag">Mercado Financeiro</span>
                         <span class="tag">Previsão</span>
                     </div>
-                    <button class="btn-visualizar" data-category="predicoes" data-image="imagens/predicoes-em-destaque/previsao-valor-acao.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
                 </div>
-            </div>
-        </div>
-    </section>
+        </div></div>
 
     <!-- Aplicativos Desenvolvidos -->
-    <section id="aplicativos" class="aplicativos">
-        <div class="container">
-            <h2 class="section-title">Aplicativos Desenvolvidos</h2>
-            <p class="section-subtitle">Soluções práticas para automação operacional, gestão e comunicação em escala.</p>
-            <div class="projetos-grid">
+        <div class="project-panel" data-project-panel="aplicativos"><div class="carousel-controls"><p>Aplicativos desenvolvidos</p><div><button class="carousel-button carousel-prev" aria-label="Projetos anteriores"><i class="fas fa-arrow-left"></i></button><button class="carousel-button carousel-next" aria-label="Próximos projetos"><i class="fas fa-arrow-right"></i></button></div></div><div class="project-carousel">
                 <div class="projeto-card">
                     <div class="projeto-header">
                         <i class="fas fa-comments"></i>
@@ -663,9 +647,6 @@
                         <span class="tag">WhatsApp Web</span>
                         <span class="tag">Excel</span>
                     </div>
-                    <button class="btn-visualizar" data-category="aplicativos" data-image="imagens/aplicativos-desenvolvidos/zapflow.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
                 </div>
 
                 <div class="projeto-card">
@@ -679,20 +660,16 @@
                         <span class="tag">Banco de Horas</span>
                         <span class="tag">Produtividade</span>
                     </div>
-                    <button class="btn-visualizar" data-category="aplicativos" data-image="imagens/aplicativos-desenvolvidos/horacerta.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
                 </div>
-            </div>
-        </div>
-    </section>
+                <div class="projeto-card">
+                    <div class="projeto-header"><i class="fas fa-clipboard-check"></i><h3>FlowProject</h3></div>
+                    <p>Aplicativo para gerenciar projetos de BI, análise, ciência de dados e programação, centralizando demandas, status e prioridades.</p>
+                    <div class="projeto-tags"><span class="tag">Power Apps</span><span class="tag">Projetos</span><span class="tag">Workflow</span></div>
+                </div>
+        </div></div>
 
     <!-- Automações Desenvolvidas -->
-    <section id="automacoes" class="aplicativos">
-        <div class="container">
-            <h2 class="section-title">Automações Desenvolvidas</h2>
-            <p class="section-subtitle">Fluxos de trabalho automatizados para reduzir esforço manual, padronizar processos e acelerar decisões operacionais.</p>
-            <div class="projetos-grid">
+        <div class="project-panel" data-project-panel="automacoes"><div class="carousel-controls"><p>Automações desenvolvidas</p><div><button class="carousel-button carousel-prev" aria-label="Projetos anteriores"><i class="fas fa-arrow-left"></i></button><button class="carousel-button carousel-next" aria-label="Próximos projetos"><i class="fas fa-arrow-right"></i></button></div></div><div class="project-carousel">
                 <div class="projeto-card">
                     <div class="projeto-header">
                         <i class="fas fa-cogs"></i>
@@ -704,9 +681,6 @@
                         <span class="tag">Power Automate</span>
                         <span class="tag">Microsoft Lists</span>
                     </div>
-                    <button class="btn-visualizar" data-category="automacoes" data-image="imagens/automacoes-desenvolvidas/governanca-acesso.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
                 </div>
 
                 <div class="projeto-card">
@@ -720,9 +694,6 @@
                         <span class="tag">Planilha</span>
                         <span class="tag">Formulário Online</span>
                     </div>
-                    <button class="btn-visualizar" data-category="automacoes" data-image="imagens/automacoes-desenvolvidas/preenchimento-formularios.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
                 </div>
 
                 <div class="projeto-card">
@@ -736,13 +707,9 @@
                         <span class="tag">E-mail</span>
                         <span class="tag">Planilha</span>
                     </div>
-                    <button class="btn-visualizar" data-category="automacoes" data-image="imagens/automacoes-desenvolvidas/disparo-email-massa.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
                 </div>
-            </div>
-        </div>
-    </section>
+        </div></div>
+    </template>
 
     <!-- Contato -->
     <section id="contato" class="contato">
@@ -750,18 +717,18 @@
             <h2 class="section-title">Entre em Contato</h2>
             <div class="contato-content">
                 <p class="contato-subtitle">
-                    Interessado em colaborar em projetos de BI, governança de dados, automação ou IA aplicada? Vamos conversar!
+                    Estou disponível para colaborar em projetos de BI, governança de dados, automação e IA aplicada. Vamos conversar!
                 </p>
                 <div class="contato-links">
-                    <a href="https://wa.me/5571982664135?text=Olá%20Rodrigo!%20Vi%20seu%20portfólio%20de%20Business%20Intelligence%20e%20gostaria%20de%20conversar%20sobre%20projetos%20de%20BI.%20Você%20tem%20disponibilidade?" target="_blank" class="contato-btn whatsapp-btn">
+                    <a href="https://wa.me/5571982664135?text=Olá%20Rodrigo!%20Vi%20seu%20portfólio%20de%20Business%20Intelligence%20e%20gostaria%20de%20conversar%20sobre%20projetos%20de%20BI.%20Você%20tem%20disponibilidade?" target="_blank" rel="noopener noreferrer" class="contato-btn whatsapp-btn">
                         <i class="fab fa-whatsapp"></i>
                         WhatsApp
                     </a>
-                    <a href="https://linkedin.com/in/digostts" target="_blank" class="contato-btn">
+                    <a href="https://linkedin.com/in/digostts" target="_blank" rel="noopener noreferrer" class="contato-btn">
                         <i class="fab fa-linkedin"></i>
                         LinkedIn
                     </a>
-                    <a href="https://github.com/digostts" target="_blank" class="contato-btn">
+                    <a href="https://github.com/digostts" target="_blank" rel="noopener noreferrer" class="contato-btn">
                         <i class="fab fa-github"></i>
                         GitHub
                     </a>
@@ -876,6 +843,8 @@
             updateMetrics();
         }
     </script>
+    <script src="js/project-data.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/projects.js"></script>
 </body>
 </html>
