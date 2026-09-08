@@ -239,8 +239,24 @@ ul {
     animation: fadeInUp 1s ease;
 }
 
+.brand-image {
+    width: 220px;
+    height: 220px;
+    display: block;
+    object-fit: contain;
+    border-radius: 28px;
+    border: 3px solid rgba(255,255,255,.82);
+    box-shadow: 0 18px 38px rgba(0,0,0,.28);
+    transition: var(--transition);
+}
+
+.brand-image:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 22px 45px rgba(0,0,0,.34);
+}
+
 .hero-text {
-    flex: 0 0 auto;
+    flex: 1 1 0;
     min-width: 300px;
     text-align: left;
     margin-left: 0;
@@ -1445,9 +1461,10 @@ section {
         gap: 2rem;
     }
 
-    .profile-image {
+    .brand-image {
         width: 150px;
         height: 150px;
+        border-radius: 22px;
     }
     
     .hero-stats {
