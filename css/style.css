@@ -86,8 +86,11 @@ ul {
     color: var(--primary-color);
 }
 
-.logo i {
-    font-size: 1.8rem;
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+    display: block;
 }
 
 .nav-menu {
