@@ -516,17 +516,50 @@ section {
 /* ===== SKILLS ===== */
 .skills-category {
     margin-bottom: 4rem;
+    display: none;
 }
 
-.skills-category h3 {
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
+.skills-category.active {
+    display: block;
+    animation: fadeInUp .35s ease both;
+}
+
+.skills-tabs {
+    display: flex;
+    justify-content: center;
+    gap: .7rem;
+    flex-wrap: wrap;
+    margin: 0 auto 2rem;
+}
+
+.skill-tab {
+    border: 1px solid rgba(0,152,69,.16);
+    background: #fff;
     color: var(--dark-color);
+    padding: .6rem .85rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font: inherit;
+    font-size: .92rem;
+    font-weight: 700;
+    transition: var(--transition);
 }
 
-.skills-category h3 i {
+.skill-tab i {
     color: var(--primary-color);
-    margin-right: 10px;
+    margin-right: .38rem;
+}
+
+.skill-tab:hover,
+.skill-tab.active {
+    color: #fff;
+    background: var(--gradient-primary);
+    border-color: transparent;
+    box-shadow: 0 10px 22px rgba(0,152,69,.18);
+}
+
+.skill-tab.active i {
+    color: #fff;
 }
 
 .skills-grid {
@@ -627,7 +660,7 @@ section {
 }
 
 .skill-details li::before {
-    content: '▸';
+    content: '\2022';
     position: absolute;
     left: 0;
     color: var(--primary-color);
@@ -677,6 +710,136 @@ section {
 /* ===== EXPERIÊNCIA ===== */
 .experiencia {
     background: var(--light-color);
+}
+
+.experience-heading-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.experience-tabs {
+    display: flex;
+    gap: .7rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.experience-tab {
+    border: 1px solid rgba(0,152,69,.16);
+    background: #fff;
+    color: var(--dark-color);
+    padding: .6rem 1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font: inherit;
+    font-size: .92rem;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.experience-tab:hover,
+.experience-tab.active {
+    color: #fff;
+    background: var(--gradient-primary);
+    border-color: transparent;
+    box-shadow: 0 10px 22px rgba(0,152,69,.18);
+}
+
+.experiencia .experiencia-coluna {
+    display: none;
+}
+
+.experiencia .experiencia-coluna.active {
+    display: block;
+    animation: fadeInUp .35s ease both;
+}
+
+.experiencia .experiencia-wrapper {
+    display: block;
+}
+
+.experience-download {
+    border: 0;
+    border-radius: 999px;
+    padding: .7rem 1rem;
+    background: var(--gradient-primary);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    font: inherit;
+    font-size: .9rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 10px 22px rgba(0,152,69,.18);
+    transition: var(--transition);
+}
+
+.experience-heading-row .experience-download {
+    position: absolute;
+    right: 20px;
+}
+
+.experience-download:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(0,152,69,.24);
+}
+
+.experience-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: minmax(360px, auto);
+    align-items: stretch;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.experience-card,
+.academia-section {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,.06);
+    border-radius: 14px;
+    padding: 1.15rem;
+    box-shadow: var(--shadow-sm);
+    height: 480px;
+    min-height: 480px;
+    overflow: hidden;
+}
+
+.experience-card-grid .experience-card {
+    color: var(--gray);
+    line-height: 1.5;
+}
+
+.experience-card h4 {
+    color: var(--dark-color);
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+}
+
+.experience-overview .timeline-date {
+    margin-bottom: 1rem;
+}
+
+.academia-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: minmax(360px, auto);
+    align-items: stretch;
+    gap: 1rem;
+}
+
+.academia-section {
+    margin: 0;
+}
+
+.experiencia .academia-section {
+    margin: 0;
+    padding: 1.15rem;
 }
 
 .experiencia-wrapper {
@@ -1140,7 +1303,7 @@ section {
 
 .contato-links {
     display: flex;
-    gap: 1rem;
+    gap: .65rem;
     justify-content: center;
     flex-wrap: nowrap;
 }
@@ -1148,7 +1311,8 @@ section {
 .contato-btn {
     background: rgba(255,255,255,0.96);
     color: var(--dark-color);
-    padding: 12px 30px;
+    padding: 10px 16px;
+    font-size: .9rem;
     border-radius: 50px;
     font-weight: 700;
     display: inline-flex;
@@ -1227,6 +1391,31 @@ section {
 
 /* ===== RESPONSIVO ===== */
 @media (max-width: 768px) {
+    .experience-heading-row {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .experience-tabs {
+        width: 100%;
+    }
+
+    .experience-heading-row .experience-download {
+        position: static;
+        width: 100%;
+    }
+
+    .experience-tab,
+    .experience-download {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .experience-card-grid,
+    .academia-container {
+        grid-template-columns: 1fr;
+    }
+
     .hamburger {
         display: flex;
     }
@@ -1325,6 +1514,7 @@ section {
 .skill-card:hover, .method-card:hover, .projeto-card:hover { transform:translateY(-10px); box-shadow:0 24px 44px rgba(0, 116, 80, .18); border-color:rgba(0,152,69,.22); }
 .skills-carousel-controls { margin-bottom:.7rem; }
 .skills-carousel-controls p { font-size:.92rem; }
+.skills-category:not(.has-carousel-controls) { padding-top: 54px; }
 @media (max-width: 1150px) and (min-width: 769px) { .skills-grid:not(.skills-carousel) { grid-template-columns:repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 1150px) and (min-width: 769px) { .methodology-grid { grid-template-columns:repeat(3, minmax(0, 1fr)); } }
 
