@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio de Rodrigo Santos - Analista de Business Intelligence, Qlik Sense, Power BI, IA e Ciência de Dados">
     <title>Rodrigo Santos | BI, IA e Ciência de Dados</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="shortcut icon" href="favicon.svg">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -28,27 +30,26 @@
                     <i class="fas fa-chart-line"></i>
                     <span>Rodrigo Santos</span>
                 </div>
-                <ul class="nav-menu">
+                <ul id="menu-principal" class="nav-menu">
                     <li><a href="#home" class="nav-link">Início</a></li>
                     <li><a href="#sobre" class="nav-link">Sobre</a></li>
                     <li><a href="#skills" class="nav-link">Habilidades</a></li>
                     <li><a href="#experiencia" class="nav-link">Experiência</a></li>
                     <li><a href="#projetos" class="nav-link">Projetos</a></li>
-                    <li><a href="#aplicativos" class="nav-link">Aplicativos</a></li>
-                    <li><a href="#automacoes" class="nav-link">Automações</a></li>
                     <li><a href="#contato" class="nav-link">Contato</a></li>
                 </ul>
-                <div class="hamburger">
+                <button class="hamburger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </button>
             </div>
         </nav>
     </header>
 
      <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="hero-data-particles" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><i class="fas fa-chart-line"></i><i class="fas fa-database"></i><i class="fas fa-code-branch"></i></div>
         <div class="container">
             <div class="hero-content">
                 <div class="hero-header">
@@ -108,12 +109,13 @@
                     <p>
                         Ao longo da carreira, desenvolvi mais de <strong><span id="dashboardsCount2">50</span> dashboards interativos</strong>, 
                         entreguei mais de <strong><span id="reportsCount2">200</span> relatórios analíticos</strong> e implementei projetos 
-                        end-to-end em áreas como <strong>saúde pública</strong>, <strong>governança de dados</strong>, <strong>gestão de pessoas</strong>, 
+                        end-to-end em áreas como <strong>saúde pública</strong>, <strong>setor automotivo</strong>, <strong>vendas comerciais</strong>, 
+                        <strong>finanças no segmento de gás</strong>, <strong>governança de dados</strong>, <strong>gestão de pessoas</strong>, 
                         <strong>planejamento</strong> e <strong>automação operacional</strong>.
                     </p>
                     <p>
                         Hoje, além do BI, estou em formação em <strong>Inteligência Artificial e Ciência de Dados</strong>, ampliando minha atuação para 
-                        <strong>modelagem preditiva</strong>, análise avançada e soluções com maior valor estratégico para negócios, serviços públicos e operações complexas.
+                        <strong>modelagem preditiva, estatística aplicada, preparação de dados, séries temporais</strong> e análise avançada para negócios, serviços públicos e operações complexas.
                     </p>
                 </div>
                 <div class="sobre-icons">
@@ -140,12 +142,13 @@
     <!-- Skills -->
     <section id="skills" class="skills">
         <div class="container">
-            <h2 class="section-title">Habilidades & Tecnologias</h2>
+            <h2 class="section-title">Minhas Habilidades em Ferramentas &amp; Tecnologias</h2>
             
             <!-- Ferramentas BI -->
             <div class="skills-category">
-                <h3><i class="fas fa-tools"></i> Ferramentas de Business Intelligence</h3>
-                <div class="skills-grid">
+                <h3><i class="fas fa-tools"></i> Ferramentas de Business Intelligence e Analytics Automation</h3>
+                <div class="carousel-controls skills-carousel-controls"><div><button class="carousel-button skill-carousel-prev" aria-label="Ferramentas anteriores"><i class="fas fa-arrow-left"></i></button><button class="carousel-button skill-carousel-next" aria-label="Próximas ferramentas"><i class="fas fa-arrow-right"></i></button></div></div>
+                <div class="skills-grid skills-carousel" data-skill-carousel>
                     <div class="skill-card primary-skill">
                         <div class="skill-icon">
                             <i class="fas fa-chart-pie"></i>
@@ -156,10 +159,10 @@
                         </div>
                         <span class="skill-badge">Avançado</span>
                         <ul class="skill-details">
-                            <li>Desenvolvimento de Dashboards Complexos</li>
-                            <li>Criação de Extensões Customizadas</li>
-                            <li>Implementação de Regras de Acesso (Section Access)</li>
-                            <li>Otimização de Data Models</li>
+                            <li>Dashboards complexos</li>
+                            <li>Extensões customizadas</li>
+                            <li>Regras de acesso (Section Access)</li>
+                            <li>Otimização de modelos de dados</li>
                         </ul>
                     </div>
 
@@ -185,12 +188,14 @@
                         </div>
                         <h4>Alteryx</h4>
                         <div class="skill-level">
-                            <div class="skill-bar" style="width: 75%"></div>
+                            <div class="skill-bar" style="width: 80%"></div>
                         </div>
                         <span class="skill-badge">Intermediário</span>
                         <ul class="skill-details">
-                            <li>ETL e Preparação de Dados</li>
-                            <li>Workflows Automatizados</li>
+                            <li>ETL/ELT e preparação de dados</li>
+                            <li>Workflows analíticos automatizados</li>
+                            <li>Qualidade e validação de dados</li>
+                            <li>Integração de fontes e relatórios</li>
                         </ul>
                     </div>
 
@@ -241,6 +246,25 @@
                 </div>
             </div>
 
+            <!-- Ciência de Dados -->
+            <div class="skills-category">
+                <h3><i class="fas fa-brain"></i> Ciência de Dados &amp; IA</h3>
+                <div class="skills-grid skills-carousel">
+                    <div class="skill-card"><div class="skill-icon"><i class="fas fa-broom"></i></div><h4>Preparação de Dados</h4><ul class="skill-details"><li>Coleta, limpeza e transformação</li><li>Análise exploratória de dados</li><li>Qualidade e consistência</li></ul></div>
+                    <div class="skill-card"><div class="skill-icon"><i class="fas fa-chart-line"></i></div><h4>Modelagem Preditiva</h4><ul class="skill-details"><li>Regressão e classificação</li><li>Séries temporais e previsão</li><li>Avaliação de modelos</li></ul></div>
+                    <div class="skill-card"><div class="skill-icon"><i class="fas fa-calculator"></i></div><h4>Estatística Aplicada</h4><ul class="skill-details"><li>Indicadores e tendências</li><li>Distribuições e amostragem</li><li>Comunicação de resultados</li></ul></div>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <h3><i class="fas fa-network-wired"></i> Engenharia de Dados &amp; Big Data</h3>
+                <div class="skills-grid">
+                    <div class="skill-card"><div class="skill-icon"><i class="fas fa-stream"></i></div><h4>Pipelines de Dados</h4><ul class="skill-details"><li>ETL/ELT e orquestração de fluxos</li><li>Validação e qualidade de dados</li><li>Cargas incrementais e monitoramento</li></ul></div>
+                    <div class="skill-card"><div class="skill-icon"><i class="fas fa-server"></i></div><h4>Big Data &amp; Lakehouse</h4><ul class="skill-details"><li>Fundamentos de processamento distribuído</li><li>Data Lake e camadas de dados</li><li>Modelagem para escala analítica</li></ul></div>
+                    <div class="skill-card"><div class="skill-icon"><i class="fas fa-plug"></i></div><h4>Integração de Dados</h4><ul class="skill-details"><li>APIs, arquivos e bancos relacionais</li><li>Consolidação de fontes diversas</li><li>Rastreabilidade e governança</li></ul></div>
+                </div>
+            </div>
+
             <!-- Power Platform -->
             <div class="skills-category">
                 <h3><i class="fas fa-bolt"></i> Microsoft Power Platform</h3>
@@ -250,10 +274,6 @@
                             <i class="fas fa-robot"></i>
                         </div>
                         <h4>Power Automate</h4>
-                        <div class="skill-level">
-                            <div class="skill-bar" style="width: 75%"></div>
-                        </div>
-                        <span class="skill-badge">Intermediário</span>
                         <ul class="skill-details">
                             <li>Automação de Processos</li>
                             <li>Fluxos de Trabalho</li>
@@ -266,616 +286,19 @@
                             <i class="fas fa-mobile-alt"></i>
                         </div>
                         <h4>Power Apps</h4>
-                        <div class="skill-level">
-                            <div class="skill-bar" style="width: 50%"></div>
-                        </div>
-                        <span class="skill-badge">Básico</span>
                         <ul class="skill-details">
                             <li>Aplicações Low-Code</li>
                             <li>Formulários Personalizados</li>
                         </ul>
                     </div>
-                </div>
-            </div>
-
-            <!-- Programação & Dados -->
-            <div class="skills-category">
-                <h3><i class="fas fa-code"></i> Programação & Banco de Dados</h3>
-                <div class="skills-grid">
                     <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-python"></i>
-                        </div>
-                        <h4>Python</h4>
-                        <ul class="skill-details">
-                            <li>Pandas & NumPy</li>
-                            <li>Análise de Dados</li>
-                            <li>Automação de Scripts</li>
-                        </ul>
-                    </div>
-
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fab fa-r-project"></i>
-                        </div>
-                        <h4>R</h4>
-                        <ul class="skill-details">
-                            <li>Análise Estatística</li>
-                            <li>Visualização de Dados</li>
-                            <li>Data Wrangling</li>
-                        </ul>
-                    </div>
-
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <h4>SQL</h4>
-                        <ul class="skill-details">
-                            <li>Consultas Complexas</li>
-                            <li>Otimização de Queries</li>
-                            <li>Stored Procedures</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Idiomas -->
-            <div class="skills-category">
-                <h3><i class="fas fa-globe"></i> Idiomas</h3>
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-language"></i>
-                        </div>
-                        <h4>Inglês Técnico</h4>
-                        <ul class="skill-details">
-                            <li>Leitura de Documentação</li>
-                            <li>Comunicação Técnica</li>
-                            <li>Compreensão de Tutoriais</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Metodologias -->
-            <div class="skills-category">
-                <h3><i class="fas fa-tasks"></i> Metodologias Ágeis</h3>
-                <div class="methodology-grid">
-                    <div class="method-card">
-                        <i class="fas fa-sync-alt"></i>
-                        <h4>Scrum</h4>
-                        <p>Desenvolvimento iterativo e incremental</p>
-                    </div>
-                    <div class="method-card">
-                        <i class="fas fa-bullseye"></i>
-                        <h4>OKR</h4>
-                        <p>Objetivos e Resultados-Chave</p>
-                    </div>
-                    <div class="method-card">
-                        <i class="fas fa-users"></i>
-                        <h4>Agile</h4>
-                        <p>Colaboração e adaptação contínua</p>
+                        <div class="skill-icon"><i class="fab fa-microsoft"></i></div>
+                        <h4>Microsoft 365</h4>
+                        <ul class="skill-details"><... (truncated)</ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Experiência -->
-    <section id="experiencia" class="experiencia">
-        <div class="container">
-            <h2 class="section-title">Experiência</h2>
-            <div class="experiencia-wrapper">
-                <!-- Experiência Profissional -->
-                <div class="experiencia-coluna">
-                    <div class="profissional-container">
-                        <button id="btnCurriculo" class="btn-curriculum-ext" title="Baixar ou visualizar currículo">
-                            <i class="fas fa-file-pdf"></i>
-                        </button>
-                        <div class="profissional-content">
-                            <h3 class="experiencia-subtitle">Profissional</h3>
-                            <div class="timeline">
-                                <div class="timeline-item">
-                                    <div class="timeline-content">
-                                        <span class="timeline-date"><span id="yearsExp3">3</span>+ Anos de Experiência</span>
-                                        <p class="experience-intro">
-                                            Experiência consolidada em grandes empresas dos nichos <strong>público e privado</strong>, desenvolvendo soluções analíticas estratégicas.
-                                        </p>
-                                        <ul class="experience-list">
-                                            <li>
-                                                <i class="fas fa-check-circle"></i>
-                                                Desenvolvimento e manutenção de <strong><span id="dashboardsCount3">50</span>+ dashboards interativos</strong> em Qlik Sense
-                                            </li>
-                                            <li>
-                                                <i class="fas fa-check-circle"></i>
-                                                Entrega de <strong><span id="reportsCount3">200</span>+ relatórios analíticos</strong> para diferentes áreas de negócio
-                                            </li>
-                                            <li>
-                                                <i class="fas fa-check-circle"></i>
-                                                Implementação completa de <strong><span id="projectsCount3">10</span>+ projetos de BI</strong> end-to-end
-                                            </li>
-                                            <li>
-                                                <i class="fas fa-check-circle"></i>
-                                                Criação de <strong>extensão customizada</strong> para Qlik Sense
-                                            </li>
-                                            <li>
-                                                <i class="fas fa-check-circle"></i>
-                                                Desenvolvimento de <strong>aplicações em Mashup</strong> para integração de dados
-                                            </li>
-                                            <li>
-                                                <i class="fas fa-check-circle"></i>
-                                                Configuração de <strong>regras de acesso (Section Access)</strong> em ambientes corporativos
-                                            </li>
-                                            <li>
-                                                <i class="fas fa-check-circle"></i>
-                                                Desenvolvimento de <strong>fluxos automatizados</strong> com Power Automate
-                                            </li>
-                                            <li>
-                                                <i class="fas fa-check-circle"></i>
-                                                Modelagem e otimização de <strong>data models</strong> para performance
-                                            </li>
-                                            <li>
-                                                <i class="fas fa-check-circle"></i>
-                                                Implementação de processos <strong>ETL</strong> com Alteryx
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Experiência Acadêmica -->
-                <div class="experiencia-coluna">
-                    <h3 class="experiencia-subtitle">Acadêmica</h3>
-                    <div class="academia-container">
-                        <div class="academia-section">
-                            <h3>Especialização</h3>
-                            <ul class="experience-list">
-                                <li>
-                                    <i class="fas fa-check-circle"></i>
-                                    <strong>Inteligência Artificial e Ciência de Dados</strong> <span style="color:#7aa3ff; font-size:0.85rem;">(em andamento)</span>
-                                </li>
-                                <li>
-                                    <i class="fas fa-check-circle"></i>
-                                    <strong>Gestão em BI</strong>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="academia-section">
-                            <h3>Formação Superior</h3>
-                            <ul class="experience-list">
-                                <li>
-                                    <i class="fas fa-check-circle"></i>
-                                    <strong>Análise e Desenvolvimento de Sistemas</strong>
-                                </li>
-                                <li>
-                                    <i class="fas fa-check-circle"></i>
-                                    <strong>Sistemas para Internet</strong>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="academia-section">
-                            <h3>Certificações</h3>
-                            <ul class="experience-list">
-                                <li>
-                                    <i class="fas fa-check-circle"></i>
-                                    <strong>Power BI para DataScience</strong>
-                                </li>
-                                <li>
-                                    <i class="fas fa-check-circle"></i>
-                                    <strong>Ciências de Dados 3.0</strong>
-                                </li>
-                                <li>
-                                    <i class="fas fa-check-circle"></i>
-                                    <strong>Scrum Foundation Professional Certification</strong>
-                                </li>
-                                <li>
-                                    <i class="fas fa-check-circle"></i>
-                                    <strong>Fundamentos de Governança de TI</strong>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dashboards em Destaque -->
-    <section id="projetos" class="projetos">
-        <div class="container">
-            <h2 class="section-title">Dashboards em Destaque</h2>
-            <div class="projetos-grid">
-                <div class="projeto-card">
-                    <div class="projeto-header">
-                        <i class="fas fa-heartbeat"></i>
-                        <h3>Carnaval</h3>
-                    </div>
-                    <p>Painel estratégico para monitoramento de atendimentos de saúde durante o carnaval, com foco em indicadores operacionais, volume de registros e suporte à decisão em saúde pública.</p>
-                    <div class="projeto-tags">
-                        <span class="tag">Qlik Sense</span>
-                        <span class="tag">Saúde</span>
-                        <span class="tag">Monitoramento</span>
-                    </div>
-                    <button class="btn-visualizar" data-category="dashboards" data-image="imagens/dashboards-em-destaque/carnaval.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
-                </div>
-
-                <div class="projeto-card">
-                    <div class="projeto-header">
-                        <i class="fas fa-stethoscope"></i>
-                        <h3>Tuberculose</h3>
-                    </div>
-                    <p>Dashboard para acompanhamento do cenário epidemiológico da tuberculose, incluindo indicadores de casos e ações de busca ativa para suporte operacional e gestão de saúde.</p>
-                    <div class="projeto-tags">
-                        <span class="tag">Qlik Sense</span>
-                        <span class="tag">Saúde Pública</span>
-                        <span class="tag">Busca Ativa</span>
-                    </div>
-                    <button class="btn-visualizar" data-category="dashboards" data-image="imagens/dashboards-em-destaque/tuberculose.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
-                </div>
-
-                <div class="projeto-card">
-                    <div class="projeto-header">
-                        <i class="fas fa-heartbeat"></i>
-                        <h3>Saúde Coletiva</h3>
-                    </div>
-                    <p>Dashboard desenvolvido em Python para análise de indicadores de saúde coletiva, com foco em monitoramento epidemiológico, tendências e suporte à gestão de saúde pública.</p>
-                    <div class="projeto-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Saúde Coletiva</span>
-                        <span class="tag">Análise de Dados</span>
-                    </div>
-                    <button class="btn-visualizar" data-category="dashboards" data-image="imagens/dashboards-em-destaque/saude-coletiva.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
-                </div>
-
-                <div class="projeto-card">
-                    <div class="projeto-header">
-                        <i class="fas fa-users-cog"></i>
-                        <h3>Planejamento de Recursos</h3>
-                    </div>
-                    <p>Dashboard de gestão de pessoas em multinacional automotiva, com análise de pessoas planejadas, alocadas e efetivas em projetos, consolidando indicadores de capacidade e demanda.</p>
-                    <div class="projeto-tags">
-                        <span class="tag">Power BI</span>
-                        <span class="tag">DAX</span>
-                        <span class="tag">Gestão de Pessoas</span>
-                    </div>
-                    <button class="btn-visualizar" data-category="dashboards" data-image="imagens/dashboards-em-destaque/planejamento-recursos.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
-                </div>
-
-                <div class="projeto-card">
-                    <div class="projeto-header">
-                        <i class="fas fa-chart-pie"></i>
-                        <h3>PMO da equipe de desenvolvimento de dados</h3>
-                    </div>
-                    <p>Dashboard em Tableau para acompanhamento de PMO da equipe de desenvolvimento de dados, com visão de indicadores de projetos, entregas, performance e acompanhamento estratégico.</p>
-                    <div class="projeto-tags">
-                        <span class="tag">Tableau</span>
-                        <span class="tag">PMO</span>
-                        <span class="tag">Gestão</span>
-                    </div>
-                    <button class="btn-visualizar" data-category="dashboards" data-image="imagens/dashboards-em-destaque/pmo-dados.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
-                </div>
-
-                <div class="projeto-card">
-                    <div class="projeto-header">
-                        <i class="fas fa-th-large"></i>
-                        <h3>Mashup Agravos</h3>
-                    </div>
-                    <p>Mashup em Qlik Sense com seis agravos selecionados para monitoramento, reunindo visualizações em uma interface integrada para análise comparativa e controle operacional.</p>
-                    <div class="projeto-tags">
-                        <span class="tag">Qlik Sense</span>
-                        <span class="tag">Mashup</span>
-                        <span class="tag">BI</span>
-                    </div>
-                    <a href="Projetos/Portal Mashup/Portal Mashup.html" class="btn-visualizar" title="Visualizar projeto completo">
-                        <i class="fas fa-external-link-alt"></i> Visualizar Projeto
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Predições em Destaque -->
-    <section id="predicoes" class="projetos">
-        <div class="container">
-            <h2 class="section-title">Predições em Destaque</h2>
-            <div class="projetos-grid">
-                <div class="projeto-card">
-                    <div class="projeto-header">
-                        <i class="fas fa-brain"></i>
-                        <h3>Óbitos com Predição</h3>
-                    </div>
-                    <p>Pipeline analítico em Alteryx com múltiplos campos como idade, raça/cor e sexo para prever quantidade de óbitos futuros, apoiando análise epidemiológica e tomada de decisão.</p>
-                    <div class="projeto-tags">
-                        <span class="tag">Alteryx</span>
-                        <span class="tag">Predição</span>
-                        <span class="tag">Saúde</span>
-                    </div>
-                    <button class="btn-visualizar" data-category="predicoes" data-image="imagens/predicoes-em-destaque/obitos-predicao.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
-                </div>
-
-                <div class="projeto-card">
-                    <div class="projeto-header">
-                        <i class="fas fa-wallet"></i>
-                        <h3>Previsão de Gasto da Empresa</h3>
-                    </div>
-                    <p>Modelo conceitual de previsão baseado em dados financeiros do setor, voltado para estimar gastos futuros da empresa e apoiar planejamento orçamentário estratégico.</p>
-                    <div class="projeto-tags">
-                        <span class="tag">IA</span>
-                        <span class="tag">Ciência de Dados</span>
-                        <span class="tag">Financeiro</span>
-                    </div>
-                    <button class="btn-visualizar" data-category="predicoes" data-image="imagens/predicoes-em-destaque/previsao-gasto-empresa.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
-                </div>
-
-                <div class="projeto-card">
-                    <div class="projeto-header">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>Previsão de Valor de Ação</h3>
-                    </div>
-                    <p>Simulação de cenário para estimar o valor futuro de uma ação com base em indicadores do mercado e comportamento histórico, apoiando análise financeira e tomada de decisão.</p>
-                    <div class="projeto-tags">
-                        <span class="tag">Modelagem</span>
-                        <span class="tag">Mercado Financeiro</span>
-                        <span class="tag">Previsão</span>
-                    </div>
-                    <button class="btn-visualizar" data-category="predicoes" data-image="imagens/predicoes-em-destaque/previsao-valor-acao.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Aplicativos Desenvolvidos -->
-    <section id="aplicativos" class="aplicativos">
-        <div class="container">
-            <h2 class="section-title">Aplicativos Desenvolvidos</h2>
-            <p class="section-subtitle">Soluções práticas para automação operacional, gestão e comunicação em escala.</p>
-            <div class="projetos-grid">
-                <div class="projeto-card">
-                    <div class="projeto-header">
-                        <i class="fas fa-comments"></i>
-                        <h3>Zapflow</h3>
-                    </div>
-                    <p>Aplicativo para envio em massa de mensagens pelo WhatsApp Web a partir de planilhas, otimizando campanhas, comunicação interna e atendimento em larga escala.</p>
-                    <div class="projeto-tags">
-                        <span class="tag">Automação</span>
-                        <span class="tag">WhatsApp Web</span>
-                        <span class="tag">Excel</span>
-                    </div>
-                    <button class="btn-visualizar" data-category="aplicativos" data-image="imagens/aplicativos-desenvolvidos/zapflow.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
-                </div>
-
-                <div class="projeto-card">
-                    <div class="projeto-header">
-                        <i class="fas fa-clock"></i>
-                        <h3>HoraCerta</h3>
-                    </div>
-                    <p>Aplicativo de controle de banco de horas com simulação e consulta local, facilitando gestão de jornada, produtividade e acompanhamento de apontamentos.</p>
-                    <div class="projeto-tags">
-                        <span class="tag">Gestão</span>
-                        <span class="tag">Banco de Horas</span>
-                        <span class="tag">Produtividade</span>
-                    </div>
-                    <button class="btn-visualizar" data-category="aplicativos" data-image="imagens/aplicativos-desenvolvidos/horacerta.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Automações Desenvolvidas -->
-    <section id="automacoes" class="aplicativos">
-        <div class="container">
-            <h2 class="section-title">Automações Desenvolvidas</h2>
-            <p class="section-subtitle">Fluxos de trabalho automatizados para reduzir esforço manual, padronizar processos e acelerar decisões operacionais.</p>
-            <div class="projetos-grid">
-                <div class="projeto-card">
-                    <div class="projeto-header">
-                        <i class="fas fa-cogs"></i>
-                        <h3>Governança de Acesso com Power Platform</h3>
-                    </div>
-                    <p>Estrutura de governança de acessos e perfis de usuários, em que toda a visualização e o gerenciamento é realizado no <strong>Power Apps</strong>, com fluxo de controle e integração ao Power BI.</p>
-                    <div class="projeto-tags">
-                        <span class="tag">Power Apps</span>
-                        <span class="tag">Power Automate</span>
-                        <span class="tag">Microsoft Lists</span>
-                    </div>
-                    <button class="btn-visualizar" data-category="automacoes" data-image="imagens/automacoes-desenvolvidas/governanca-acesso.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
-                </div>
-
-                <div class="projeto-card">
-                    <div class="projeto-header">
-                        <i class="fas fa-file-alt"></i>
-                        <h3>Preenchimento de Formulários em Massa</h3>
-                    </div>
-                    <p>Automação que lê os dados de uma planilha, captura linha por linha, preenche um formulário online campo a campo, submete o formulário, atualiza a página e segue para a próxima linha.</p>
-                    <div class="projeto-tags">
-                        <span class="tag">Automação</span>
-                        <span class="tag">Planilha</span>
-                        <span class="tag">Formulário Online</span>
-                    </div>
-                    <button class="btn-visualizar" data-category="automacoes" data-image="imagens/automacoes-desenvolvidas/preenchimento-formularios.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
-                </div>
-
-                <div class="projeto-card">
-                    <div class="projeto-header">
-                        <i class="fas fa-envelope"></i>
-                        <h3>Disparo de E-mails em Massa</h3>
-                    </div>
-                    <p>Fluxo automatizado para envio de e-mails em massa a partir de planilhas, com padronização de mensagens, maior agilidade e redução de esforço manual na comunicação.</p>
-                    <div class="projeto-tags">
-                        <span class="tag">Comunicação</span>
-                        <span class="tag">E-mail</span>
-                        <span class="tag">Planilha</span>
-                    </div>
-                    <button class="btn-visualizar" data-category="automacoes" data-image="imagens/automacoes-desenvolvidas/disparo-email-massa.svg" title="Visualizar projeto completo">
-                        <i class="fas fa-image"></i> Visualizar Projeto
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contato -->
-    <section id="contato" class="contato">
-        <div class="container">
-            <h2 class="section-title">Entre em Contato</h2>
-            <div class="contato-content">
-                <p class="contato-subtitle">
-                    Interessado em colaborar em projetos de BI, governança de dados, automação ou IA aplicada? Vamos conversar!
-                </p>
-                <div class="contato-links">
-                    <a href="https://wa.me/5571982664135?text=Olá%20Rodrigo!%20Vi%20seu%20portfólio%20de%20Business%20Intelligence%20e%20gostaria%20de%20conversar%20sobre%20projetos%20de%20BI.%20Você%20tem%20disponibilidade?" target="_blank" class="contato-btn whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i>
-                        WhatsApp
-                    </a>
-                    <a href="https://linkedin.com/in/digostts" target="_blank" class="contato-btn">
-                        <i class="fab fa-linkedin"></i>
-                        LinkedIn
-                    </a>
-                    <a href="https://github.com/digostts" target="_blank" class="contato-btn">
-                        <i class="fab fa-github"></i>
-                        GitHub
-                    </a>
-                    <a href="mailto:rodrigobas.1993@gmail.com" class="contato-btn">
-                        <i class="fas fa-envelope"></i>
-                        E-mail
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Modal para Imagens dos Projetos -->
-    <div id="imageModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modalTitle">Projeto</h2>
-                <button class="close-modal" onclick="closeImageModal()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <button class="modal-nav modal-prev" onclick="previousImage()">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <img id="modalImage" src="" alt="Imagem do projeto" class="modal-image">
-                <button class="modal-nav modal-next" onclick="nextImage()">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Botão Voltar ao Topo -->
-    <button id="backToTop" class="back-to-top" title="Voltar ao topo">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 - Portfolio de BI, IA e Ciência de Dados | Rodrigo Santos</p>
-            <p>Transformando dados em decisões estratégicas com tecnologia, análise e visão de negócio</p>
-        </div>
-    </footer>
-
-    <script>
-        // Automação incremental de valores baseada em data
-        function calculateMetrics() {
-            const startDate = new Date(2023, 0, 1); // 01/01/2023
-            const today = new Date();
-            const years = today.getFullYear() - startDate.getFullYear();
-            
-            // Calcula com base 0 em 2023
-            const yearsExp = 0 + years;
-            const projects = 0 + (years * 5);
-            const dashboards = (0 + (years * 10)) + 20;
-            const reports = (0 + (years * 50)) + 50;
-            
-            return { yearsExp, projects, dashboards, reports };
-        }
-        
-        function updateMetrics() {
-            const metrics = calculateMetrics();
-            
-            // Atualizar anos de experiência
-            if (document.getElementById('yearsExp')) {
-                document.getElementById('yearsExp').textContent = metrics.yearsExp;
-            }
-            if (document.getElementById('yearsExp2')) {
-                document.getElementById('yearsExp2').textContent = metrics.yearsExp;
-            }
-            if (document.getElementById('yearsExp3')) {
-                document.getElementById('yearsExp3').textContent = metrics.yearsExp;
-            }
-            
-            // Atualizar projetos
-            if (document.getElementById('projectsCount')) {
-                document.getElementById('projectsCount').textContent = metrics.projects;
-            }
-            if (document.getElementById('projectsCount3')) {
-                document.getElementById('projectsCount3').textContent = metrics.projects;
-            }
-            
-            // Atualizar dashboards
-            if (document.getElementById('dashboardsCount')) {
-                document.getElementById('dashboardsCount').textContent = metrics.dashboards;
-            }
-            if (document.getElementById('dashboardsCount2')) {
-                document.getElementById('dashboardsCount2').textContent = metrics.dashboards;
-            }
-            if (document.getElementById('dashboardsCount3')) {
-                document.getElementById('dashboardsCount3').textContent = metrics.dashboards;
-            }
-            
-            // Atualizar relatórios
-            if (document.getElementById('reportsCount')) {
-                document.getElementById('reportsCount').textContent = metrics.reports;
-            }
-            if (document.getElementById('reportsCount2')) {
-                document.getElementById('reportsCount2').textContent = metrics.reports;
-            }
-            if (document.getElementById('reportsCount3')) {
-                document.getElementById('reportsCount3').textContent = metrics.reports;
-            }
-        }
-        
-        // Executar quando a página carregar
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', updateMetrics);
-        } else {
-            updateMetrics();
-        }
-    </script>
-    <script src="js/script.js"></script>
 </body>
 </html>

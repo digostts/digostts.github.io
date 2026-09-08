@@ -26,7 +26,7 @@ Rodrigo Santos - Analista de Business Intelligence com 3+ anos de experiência e
 ## 🛠️ Habilidades Principais
 
 ### Ferramentas de BI
-- **Qlik Sense** (Avançado)
+- **Qlik Sense** (avançado)
 - Power BI (Intermediário)
 - Alteryx (Intermediário)
 - Looker Studio (Básico)

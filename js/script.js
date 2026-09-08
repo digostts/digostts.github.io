@@ -4,12 +4,14 @@ const navMenu = document.querySelector('.nav-menu');
 
 hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', navMenu.classList.contains('active'));
 });
 
 // Fechar menu ao clicar em um link
 document.querySelectorAll('.nav-menu a').forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
     });
 });
 
@@ -98,24 +100,23 @@ document.querySelectorAll('.skill-card, .projeto-card, .method-card, .icon-box')
 });
 
 // ===== ANIMAÇÃO DAS BARRAS DE SKILL =====
+// Guarda o valor original uma única vez: evita que a barra seja zerada novamente
+// quando um card entra e sai do carrossel.
+document.querySelectorAll('.skill-bar').forEach(bar => {
+    bar.style.setProperty('--skill-level', bar.style.width || '0%');
+    bar.style.width = '0';
+});
+
 const skillObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            const skillBar = entry.target.querySelector('.skill-bar');
-            if (skillBar) {
-                const width = skillBar.style.width;
-                skillBar.style.width = '0';
-                setTimeout(() => {
-                    skillBar.style.width = width;
-                }, 200);
-            }
+            entry.target.classList.add('skill-bar-ready');
+            skillObserver.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
-document.querySelectorAll('.skill-card').forEach(card => {
-    skillObserver.observe(card);
-});
+document.querySelectorAll('.skill-card').forEach(card => skillObserver.observe(card));
 
 // ===== CONTADOR ANIMADO (Stats) =====
 const animateCounter = (element, target) => {
@@ -159,29 +160,11 @@ const imageModal = document.getElementById('imageModal');
 const modalImage = document.getElementById('modalImage');
 const modalTitle = document.getElementById('modalTitle');
 
-const projectImagesByCategory = {
-    dashboards: [
-        { image: 'imagens/dashboards-em-destaque/carnaval.svg', title: 'Carnaval' },
-        { image: 'imagens/dashboards-em-destaque/tuberculose.svg', title: 'Tuberculose' },
-        { image: 'imagens/dashboards-em-destaque/saude-coletiva.svg', title: 'Saúde Coletiva' },
-        { image: 'imagens/dashboards-em-destaque/planejamento-recursos.svg', title: 'Planejamento de Recursos' },
-        { image: 'imagens/dashboards-em-destaque/pmo-dados.svg', title: 'PMO da equipe de desenvolvimento de dados' }
-    ],
-    predicoes: [
-        { image: 'imagens/predicoes-em-destaque/obitos-predicao.svg', title: 'Óbitos com Predição' },
-        { image: 'imagens/predicoes-em-destaque/previsao-gasto-empresa.svg', title: 'Previsão de Gasto da Empresa' },
-        { image: 'imagens/predicoes-em-destaque/previsao-valor-acao.svg', title: 'Previsão de Valor de Ação' }
-    ],
-    aplicativos: [
-        { image: 'imagens/aplicativos-desenvolvidos/zapflow.svg', title: 'Zapflow' },
-        { image: 'imagens/aplicativos-desenvolvidos/horacerta.svg', title: 'HoraCerta' }
-    ],
-    automacoes: [
-        { image: 'imagens/automacoes-desenvolvidas/governanca-acesso.svg', title: 'Governança de Acesso com Power Platform' },
-        { image: 'imagens/automacoes-desenvolvidas/preenchimento-formularios.svg', title: 'Preenchimento de Formulários em Massa' },
-        { image: 'imagens/automacoes-desenvolvidas/disparo-email-massa.svg', title: 'Disparo de E-mails em Massa' }
-    ]
-};
+const projectCategoryKeys = { Dashboard: 'dashboards', Predição: 'predicoes', Aplicativo: 'aplicativos', Automação: 'automacoes' };
+const projectImagesByCategory = Object.fromEntries(Object.entries(projectCategoryKeys).map(([category, key]) => [
+    key,
+    projectData.filter(project => project.category === category).map(project => ({ image: project.image, title: project.title }))
+]));
 
 let activeProjectImages = [];
 let currentImageIndex = 0;
